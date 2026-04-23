@@ -8,6 +8,7 @@
 - [x] BMad UX Design Workflow ve UX Spesifikasyonları tamamlandı.
 - [x] Teknik Mimari Tasarımı
 - [x] Epik ve Hikaye Oluşturma
+- [x] Sprint Planlama ve Durum Takibi Kurulumu (`sprint-status.yaml`)
 
 ## Yapılacaklar (Backlog)
 - [ ] Vite Projesi Başlatma (Epic 1.1)
