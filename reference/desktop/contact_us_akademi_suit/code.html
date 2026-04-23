@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Akademi Suit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dae1",
+                        "surface-container-low": "#f2f3fb",
+                        "on-secondary-fixed-variant": "#49388f",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2976c7",
+                        "primary-fixed": "#d4e3ff",
+                        "inverse-surface": "#2e3036",
+                        "on-tertiary-fixed": "#291800",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001c39",
+                        "on-surface-variant": "#414751",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fdfcff",
+                        "on-surface": "#191c21",
+                        "surface": "#F8FAFC",
+                        "accent-boys": "#4682B4",
+                        "white-glass": "rgba(255, 255, 255, 0.6)",
+                        "surface-variant": "#e1e2e9",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary-container": "#443289",
+                        "surface-tint": "#0060ac",
+                        "tertiary": "#7f5300",
+                        "surface-container-lowest": "#ffffff",
+                        "text-main": "#1E293B",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#004883",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-secondary-fixed": "#1d0061",
+                        "secondary": "#6151a8",
+                        "secondary-fixed": "#e6deff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c1c7d3",
+                        "surface-container": "#ecedf5",
+                        "on-background": "#191c21",
+                        "outline": "#717783",
+                        "tertiary-container": "#a06900",
+                        "surface-container-highest": "#e1e2e9",
+                        "primary": "#005da7",
+                        "inverse-primary": "#a4c9ff",
+                        "background": "#f8f9ff",
+                        "accent-girls": "#A594F1",
+                        "inverse-on-surface": "#eff0f8",
+                        "surface-bright": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ef",
+                        "secondary-container": "#b2a1ff",
+                        "tertiary-fixed-dim": "#ffb953",
+                        "secondary-fixed-dim": "#cbbeff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.25rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "xl": "80px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Epilogue"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "h3": ["Epilogue"],
+                        "h2": ["Epilogue"],
+                        "cta-label": ["Epilogue"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", { "lineHeight": "1.1", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.25", "fontWeight": "400" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.25", "fontWeight": "600" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "cta-label": ["16px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased">
+<nav class="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl text-blue-700 dark:text-blue-400 fixed top-0 w-full z-50 border-b border-white/20 dark:border-slate-800/50 shadow-sm">
+<div class="flex justify-between items-center h-20 px-6 md:px-20 w-full max-w-[1280px] mx-auto">
+<div class="text-xl font-black tracking-tighter text-slate-900 dark:text-white">
+                AKADEMI SUIT
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-caption text-xs font-bold tracking-widest uppercase hover:scale-[1.02] transition-transform duration-200" href="#">Rooms</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-caption text-xs font-bold tracking-widest uppercase hover:scale-[1.02] transition-transform duration-200" href="#">Amenities</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-caption text-xs font-bold tracking-widest uppercase hover:scale-[1.02] transition-transform duration-200" href="#">Girls' Wing</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-caption text-xs font-bold tracking-widest uppercase hover:scale-[1.02] transition-transform duration-200" href="#">Boys' Wing</a>
+<a class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 pb-1 font-caption text-xs font-bold tracking-widest uppercase hover:scale-[1.02] transition-transform duration-200" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary font-cta-label px-6 py-3 rounded-full hover:scale-[1.02] transition-transform duration-200 scale-95 active:opacity-90">
+                APPLY NOW
+            </button>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-xl px-6 md:px-20 max-w-container-max mx-auto w-full">
+<div class="text-center mb-xl">
+<h1 class="font-h1 text-h1 text-on-surface mb-sm">Get in Touch</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                We're here to help you secure your premium living experience. Reach out with any questions about our facilities, application process, or to schedule a tour.
+            </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg items-stretch">
+<div class="flex flex-col gap-lg">
+<div class="space-y-sm">
+<h2 class="font-h2 text-h2 text-on-surface">Reach Us</h2>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+</div>
+<div class="flex flex-col gap-md">
+<div class="glass-card rounded-2xl p-lg space-y-lg">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary text-3xl">corporate_fare</span>
+<h3 class="font-h3 text-h3 text-on-surface">Corporate Office</h3>
+</div>
+<div class="space-y-sm">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Atatürk Cad. No: 123<br/>Merkez, Sivas 58000</p>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">call</span>
+<a class="font-body-md text-body-md text-primary font-bold text-lg" href="tel:+903460000000">+90 (346) 000 00 00</a>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">mail</span>
+<a class="font-body-md text-body-md text-primary hover:underline" href="mailto:info@akademisuit.com">info@akademisuit.com</a>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md pt-lg border-t border-outline-variant/30">
+<div class="space-y-xs">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-accent-girls"></div>
+<h4 class="font-h3 text-lg text-on-surface">Girls' Wing</h4>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Central Admissions</p>
+<a class="font-body-md text-body-md text-primary font-semibold" href="tel:+903460000000">+90 (346) 000 00 00</a>
+</div>
+<div class="space-y-xs">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-accent-boys"></div>
+<h4 class="font-h3 text-lg text-on-surface">Boys' Wing</h4>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Central Admissions</p>
+<a class="font-body-md text-body-md text-primary font-semibold" href="tel:+903460000000">+90 (346) 000 00 00</a>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-lg flex items-center justify-between">
+<span class="font-caption font-bold uppercase tracking-widest text-on-surface-variant">Connect With Us</span>
+<div class="flex gap-md text-primary">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">schedule</span>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl overflow-hidden relative min-h-[500px] lg:h-auto shadow-2xl group">
+<img alt="Map of Sivas" class="w-full h-full object-cover opacity-90 mix-blend-luminosity grayscale group-hover:grayscale-0 group-hover:mix-blend-normal transition-all duration-700 ease-in-out scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD538EuZ6_thfWd5ErktlbnAFJJrfA44RGBN_r2kA4YCr99RzZFxHX16QEycMKJWuzISjn9Zu7jtpCdDBJiqy-bEFbas8q-JOijl2M1jVyiD3tyVdVV3GYSRrftUT8lYecRSry3nqV94RreEVORV6u51TSQbtXX68PWWBWpQM6hvwgLtJmK1Hm2fJN2gEEd9rpe8Pj2qaAY0xMwI9bGD5YzuIhSZHO1b4jz5ste6dcPktlRIJDZTs83XOu4A82omFLBSYkm7GMWjM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent pointer-events-none"></div>
+<div class="absolute bottom-md left-md bg-white/90 backdrop-blur-md p-md rounded-xl shadow-lg border border-white/20">
+<p class="font-cta-label text-xs uppercase tracking-widest text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">near_me</span> Sivas City Center
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-slate-50 dark:bg-slate-950 text-blue-700 dark:text-blue-400 w-full py-16 border-t border-slate-200 dark:border-slate-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-20 max-w-[1280px] mx-auto">
+<div class="col-span-1 md:col-span-2">
+<div class="text-lg font-black text-slate-900 dark:text-white mb-sm">
+                    AKADEMI SUIT
+                </div>
+<p class="font-caption text-caption text-slate-500 dark:text-slate-400">
+                    © 2024 Akademi Suit Premium Student Living. All rights reserved.
+                </p>
+</div>
+<div class="col-span-1 flex flex-col gap-sm">
+<h4 class="font-caption text-xs font-bold uppercase tracking-tighter text-slate-900 dark:text-white mb-xs">Information</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:text-blue-600 transition-colors duration-200 font-body-md text-sm leading-relaxed" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:text-blue-600 transition-colors duration-200 font-body-md text-sm leading-relaxed" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:text-blue-600 transition-colors duration-200 font-body-md text-sm leading-relaxed" href="#">Corporate</a>
+</div>
+<div class="col-span-1 flex flex-col gap-sm">
+<h4 class="font-caption text-xs font-bold uppercase tracking-tighter text-slate-900 dark:text-white mb-xs">Facilities</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:text-blue-600 transition-colors duration-200 font-body-md text-sm leading-relaxed" href="#">Girls' Wing</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:text-blue-600 transition-colors duration-200 font-body-md text-sm leading-relaxed" href="#">Boys' Wing</a>
+</div>
+</div>
+</footer>
+
+</body></html>

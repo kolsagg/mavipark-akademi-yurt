@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Akademi Suit - Amenities</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#fdfcff",
+                        "on-background": "#191c21",
+                        "secondary": "#6151a8",
+                        "on-primary-fixed-variant": "#004883",
+                        "inverse-on-surface": "#eff0f8",
+                        "surface-dim": "#d8dae1",
+                        "on-surface": "#191c21",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface": "#F8FAFC",
+                        "secondary-fixed-dim": "#cbbeff",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "surface-container-low": "#f2f3fb",
+                        "secondary-container": "#b2a1ff",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "primary": "#005da7",
+                        "surface-tint": "#0060ac",
+                        "text-main": "#1E293B",
+                        "on-secondary-container": "#443289",
+                        "surface-container": "#ecedf5",
+                        "on-surface-variant": "#414751",
+                        "inverse-surface": "#2e3036",
+                        "outline": "#717783",
+                        "primary-fixed": "#d4e3ff",
+                        "inverse-primary": "#a4c9ff",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-secondary-fixed": "#1d0061",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c1c7d3",
+                        "on-tertiary-fixed": "#291800",
+                        "on-primary-fixed": "#001c39",
+                        "surface-variant": "#e1e2e9",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#e1e2e9",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "accent-girls": "#A594F1",
+                        "tertiary-container": "#a06900",
+                        "on-secondary-fixed-variant": "#49388f",
+                        "white-glass": "rgba(255, 255, 255, 0.6)",
+                        "error-container": "#ffdad6",
+                        "accent-boys": "#4682B4",
+                        "tertiary-fixed-dim": "#ffb953",
+                        "secondary-fixed": "#e6deff",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary": "#7f5300",
+                        "surface-container-high": "#e6e8ef",
+                        "primary-container": "#2976c7"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        "2xl": "1.25rem",
+                        "3xl": "1.5rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        xl: "80px",
+                        sm: "12px",
+                        md: "24px",
+                        base: "8px",
+                        lg: "48px",
+                        xs: "4px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "cta-label": ["Epilogue"],
+                        h1: ["Epilogue"],
+                        h3: ["Epilogue"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        h2: ["Epilogue"],
+                        caption: ["Inter"]
+                    },
+                    fontSize: {
+                        "cta-label": ["16px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "700" }],
+                        h1: ["48px", { lineHeight: "1.1", fontWeight: "700" }],
+                        h3: ["24px", { lineHeight: "1.25", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.25", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "1.5", fontWeight: "400" }],
+                        h2: ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+                        caption: ["14px", { lineHeight: "1.4", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen relative text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar (From JSON) -->
+<header class="fixed top-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border-b border-white/20 dark:border-slate-800/50 flex justify-between items-center px-6 py-4">
+<button class="flex items-center justify-center text-blue-600 dark:text-blue-400 scale-95 active:scale-90 transition-transform hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-lg font-black text-blue-900 dark:text-white tracking-widest font-epilogue font-bold tracking-tight">AKADEMI SUIT</h1>
+<button class="text-blue-600 dark:text-blue-400 font-epilogue font-bold tracking-tight scale-95 active:scale-90 transition-transform hover:opacity-80 transition-opacity text-sm">APPLY NOW</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[90px] pb-[120px] px-md max-w-container-max mx-auto flex flex-col gap-lg">
+<!-- Page Header -->
+<section class="flex flex-col gap-sm pt-md">
+<h2 class="font-h2 text-h2 text-primary">Premium Facilities</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[80%]">Designed to support your academic journey and elevate your downtime.</p>
+</section>
+<!-- Amenities Layout -->
+<div class="flex flex-col gap-md">
+<!-- Fitness Center Card (Glassmorphism) -->
+<article class="bg-white-glass backdrop-blur-[12px] border border-white/20 rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform duration-300">
+<div class="h-[180px] w-full bg-surface-container-high relative">
+<img alt="Fitness Center" class="w-full h-full object-cover absolute inset-0" data-alt="Modern fitness center with sleek cardio machines and free weights, sunlit room, high-end gym aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCABsgxCgNeSNdfPn7ZVzzNA9cF8tW5hjmjN3jhT-V5CgIXYr2UbpEjwcvkxHBo7drBcLjt6uQWKmQVR3NFkQMavTO4p4ZmKHUpq4QBNqbwqoiKniBXiEuhR2TZrY0TP2Px3FqZMvUklMjDPoM3e52MGPAhYdFf6pZTb5OVqeDKw_cbMXCzebh7-wihN72oJMwoELBk41eiSluwh3VXbsQ7rHUh2wP30XkWae8x8ccnHecbTRD2AAwP-67Yk7gpFr0wJcLXQ7N4gIw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-sm left-md flex items-center gap-base">
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white">
+<span class="material-symbols-outlined text-white">fitness_center</span>
+</div>
+</div>
+</div>
+<div class="p-md flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface">State-of-the-Art Fitness</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Fully equipped cardio and strength zones to keep you moving, open daily.</p>
+</div>
+</article>
+<!-- Study Zones Card (Glassmorphism) -->
+<article class="bg-white-glass backdrop-blur-[12px] border border-white/20 rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform duration-300">
+<div class="h-[180px] w-full bg-surface-container-high relative">
+<img alt="Study Zones" class="w-full h-full object-cover absolute inset-0" data-alt="Quiet modern study lounge with individual desks, warm acoustic wood paneling, focused calm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV8insaa4gDMgwB0LdL6AhOtmEn7vLIOXW0k7eC63FoMVh3MdGBUlCMHCamJpp1ZfYY4KmxJjyLUSHPrh7LOpiiFqG9Qvayk30aJ0EO6Eb0HYbueytYHi9Tcahaw9xCKt6B3SKvrdOCVjjDT_at9ibJvIaQHOf5ugMRs3t3c5WH7FMSTh0kw08CupthnyXjDoRSw-7LuF1b33zlP5HPX-U-YOYQDhe1hgEYKOdjBPOn3IVZ66UZOcwLi00m6JQaQQcC09dIca6COw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-sm left-md flex items-center gap-base">
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white">
+<span class="material-symbols-outlined text-white">local_library</span>
+</div>
+</div>
+</div>
+<div class="p-md flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface">Focus Hubs</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Acoustically treated private pods and collaborative workspaces designed for deep work.</p>
+</div>
+</article>
+<!-- Social Lounge Card (Glassmorphism) -->
+<article class="bg-white-glass backdrop-blur-[12px] border border-white/20 rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform duration-300">
+<div class="h-[180px] w-full bg-surface-container-high relative">
+<img alt="Social Lounge" class="w-full h-full object-cover absolute inset-0" data-alt="Luxurious social lounge area with comfortable modern sofas, subtle accent lighting, premium relaxed atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDit9_coIll0fGy1TFkyvTYHGjPXKAcbHFHwIy_irYr-nwHD6-Elk3vtZ6j8V55gG0m_I36ZPCVEXV4HOrokAWFrFcWyYB_y1NM3kp2utBy3-Eabh98n42G76BSIkaEfyj9YCIi7maQnR_tVEMlUuYfUU6orc7jVJKBJBOBk_IDMOr9YtJHwEVV5A9G9GpYsmuiWMzaW2vLHZEkptUUb1t7RFJLkoNzSNSo0pQb6vFRHTQKuE6PhxGfF7dQTCPp3E6fE7JQJgzYsv8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-sm left-md flex items-center gap-base">
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white">
+<span class="material-symbols-outlined text-white">weekend</span>
+</div>
+</div>
+</div>
+<div class="p-md flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface">The Commons</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Connect with peers in our premium lounge featuring entertainment systems and cafe seating.</p>
+</div>
+</article>
+<!-- Essentials Grid (Wi-Fi & Security) -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Wi-Fi -->
+<div class="bg-white-glass backdrop-blur-[12px] border border-white/20 rounded-2xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-center h-full">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">wifi</span>
+</div>
+<div>
+<h4 class="font-h3 text-[18px] font-semibold text-on-surface leading-tight">Gigabit Wi-Fi</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-1">Seamless connectivity across all wings.</p>
+</div>
+</div>
+<!-- Security -->
+<div class="bg-white-glass backdrop-blur-[12px] border border-white/20 rounded-2xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-center h-full">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">shield_lock</span>
+</div>
+<div>
+<h4 class="font-h3 text-[18px] font-semibold text-on-surface leading-tight">24/7 Security</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-1">Biometric access and active monitoring.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (From JSON) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-3xl border-t border-white/20 dark:border-slate-800/50 shadow-lg dark:shadow-none bg-white/60 dark:bg-slate-900/60 backdrop-blur-md fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 md:hidden">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-500 dark:hover:text-blue-300 scale-105 transition-all duration-300 ease-out group" href="#">
+<span class="material-symbols-outlined group-hover:opacity-80 transition-opacity">home</span>
+<span class="font-epilogue text-[10px] font-bold uppercase tracking-wider mt-1">Home</span>
+</a>
+<!-- Amenities (Active) -->
+<a class="flex flex-col items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 rounded-2xl px-5 py-2 scale-105 transition-all duration-300 ease-out group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hotel_class</span>
+<span class="font-epilogue text-[10px] font-bold uppercase tracking-wider mt-1">Amenities</span>
+</a>
+<!-- Wings (Inactive) -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-500 dark:hover:text-blue-300 scale-105 transition-all duration-300 ease-out group" href="#">
+<span class="material-symbols-outlined group-hover:opacity-80 transition-opacity">splitscreen</span>
+<span class="font-epilogue text-[10px] font-bold uppercase tracking-wider mt-1">Wings</span>
+</a>
+<!-- Contact (Inactive) -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-500 dark:hover:text-blue-300 scale-105 transition-all duration-300 ease-out group" href="#">
+<span class="material-symbols-outlined group-hover:opacity-80 transition-opacity">contact_support</span>
+<span class="font-epilogue text-[10px] font-bold uppercase tracking-wider mt-1">Contact</span>
+</a>
+</nav>
+</body></html>

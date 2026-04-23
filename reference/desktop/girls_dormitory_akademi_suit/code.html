@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Akademi Suit - Girls' Dormitory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e6deff",
+                        "secondary": "#6151a8",
+                        "primary": "#005da7",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-fixed": "#d4e3ff",
+                        "surface-container": "#ecedf5",
+                        "inverse-on-surface": "#eff0f8",
+                        "text-main": "#1E293B",
+                        "surface-container-low": "#f2f3fb",
+                        "outline": "#717783",
+                        "on-primary-container": "#fdfcff",
+                        "on-secondary-container": "#443289",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c1c7d3",
+                        "on-secondary-fixed-variant": "#49388f",
+                        "surface-dim": "#d8dae1",
+                        "surface-tint": "#0060ac",
+                        "on-primary-fixed-variant": "#004883",
+                        "on-tertiary-fixed": "#291800",
+                        "on-secondary-fixed": "#1d0061",
+                        "tertiary": "#7f5300",
+                        "on-secondary": "#ffffff",
+                        "surface": "#F8FAFC",
+                        "tertiary-fixed-dim": "#ffb953",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "white-glass": "rgba(255, 255, 255, 0.6)",
+                        "on-surface-variant": "#414751",
+                        "on-primary-fixed": "#001c39",
+                        "secondary-fixed-dim": "#cbbeff",
+                        "inverse-surface": "#2e3036",
+                        "surface-container-highest": "#e1e2e9",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "surface-bright": "#f8f9ff",
+                        "accent-boys": "#4682B4",
+                        "on-surface": "#191c21",
+                        "surface-variant": "#e1e2e9",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c21",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ef",
+                        "tertiary-container": "#a06900",
+                        "inverse-primary": "#a4c9ff",
+                        "accent-girls": "#A594F1",
+                        "primary-container": "#2976c7",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#b2a1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "20px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "lg": "48px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "cta-label": ["Epilogue"],
+                        "h3": ["Epilogue"],
+                        "h1": ["Epilogue"],
+                        "h2": ["Epilogue"],
+                        "caption": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.25", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "cta-label": ["16px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "h3": ["24px", { "lineHeight": "1.25", "fontWeight": "600" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        .hero-section-gradient {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6e8ef 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased pt-20">
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-lg border-b border-white/20 dark:border-slate-700/30 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-6 md:px-20 max-w-[1280px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-slate-900 dark:text-white">
+                Akademi Suit
+            </div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-purple-600 dark:text-purple-400 border-b-2 border-purple-600 pb-1 font-['Epilogue'] uppercase tracking-wider text-sm font-bold transition-all duration-300 transform hover:scale-[0.98]" href="#">
+                    Home
+                </a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] uppercase tracking-wider text-sm font-bold transition-colors hover:opacity-80 duration-300" href="#">
+                    Rooms
+                </a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] uppercase tracking-wider text-sm font-bold transition-colors hover:opacity-80 duration-300" href="#">
+                    Amenities
+                </a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] uppercase tracking-wider text-sm font-bold transition-colors hover:opacity-80 duration-300" href="#">
+                    Gallery
+                </a>
+</div>
+<div>
+<button class="bg-[#A594F1] hover:bg-[#8e7be8] text-white font-cta-label text-cta-label py-3 px-6 rounded-lg transition-colors duration-300 uppercase shadow-sm">
+                    APPLY NOW
+                </button>
+</div>
+</div>
+</nav>
+<section class="hero-section-gradient min-h-[calc(100vh-80px)] flex items-center relative overflow-hidden py-16 md:py-0">
+<div class="max-w-[1440px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 items-center gap-8 relative">
+<div class="hidden md:block md:col-span-3">
+<div class="rounded-2xl overflow-hidden shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+<img alt="Sophisticated dormitory room interior left" class="w-full h-[600px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbVF-pbUZOJLYk61-tO8NXWjaNmfzx_fykhgfnIiV2PaQxT4EOJtCpfwykyn6vFbiqDFWR989rduJWTkiO-gIY9rdfnnPAOx9n9fICF4LwAvqpSxF0QUU-YIto1pxnhWJFKKR0S0g34uR8GsBiEIy7UQ5kYVkSf4Pa2E-tERdgWYIrSPn2xJKtuExxlaiUtlTeWxjToqwCrevHHdUJm8ftnYSj2rRaVA8qIRe2br4aWrueOaUS9VLPVKVXW1h-UtywgTGje_sURJQ"/>
+</div>
+</div>
+<div class="col-span-1 md:col-span-6 flex flex-col items-center text-center space-y-8 z-10">
+<div class="inline-flex items-center space-x-2 bg-white-glass backdrop-blur-md px-4 py-2 rounded-full border border-white/20 w-fit">
+<span class="material-symbols-outlined text-accent-girls text-sm" style="font-variation-settings: 'FILL' 1;">
+                        star
+                    </span>
+<span class="font-caption text-caption text-secondary">Premium Girls' Residence</span>
+</div>
+<div class="space-y-4 max-w-2xl">
+<h1 class="font-h1 text-h1 text-on-surface leading-tight">
+                        Sophisticated Living for the <span class="text-accent-girls">Modern Student</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-4">
+                        Experience a sanctuary designed for focus, comfort, and community. Discover a boutique living experience that elevates your academic journey.
+                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-accent-girls hover:bg-[#8e7be8] text-white font-cta-label text-cta-label py-4 px-10 rounded-lg transition-colors duration-300 uppercase shadow-lg">
+                        Explore Rooms
+                    </button>
+<button class="bg-white-glass hover:bg-white/80 backdrop-blur-md border border-white/40 text-on-surface font-cta-label text-cta-label py-4 px-10 rounded-lg transition-all duration-300 uppercase shadow-md">
+                        View Gallery
+                    </button>
+</div>
+<div class="glass-card w-full max-w-sm flex items-center p-6 shadow-xl border border-white/30 text-left transition-all hover:translate-y-[-5px]">
+<div class="w-14 h-14 rounded-full bg-accent-girls/20 flex items-center justify-center mr-4 shrink-0">
+<span class="material-symbols-outlined text-accent-girls text-3xl" style="font-variation-settings: 'FILL' 1;">
+                            verified_user
+                        </span>
+</div>
+<div>
+<h3 class="font-h3 text-xl text-on-surface mb-1">Secure &amp; Safe</h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">24/7 on-site security and biometric access control for peace of mind.</p>
+</div>
+</div>
+</div>
+<div class="hidden md:block md:col-span-3">
+<div class="rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+<img alt="Sophisticated dormitory room interior right" class="w-full h-[600px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqp6wYpZu7seSx2VqHDQiRdaONNmj3g8rdC6dwRILd6bzIYcvYMtLGO4kNEpvLVqWf7QNcSdGNiCblXjm-og5NJIF6ZX2XD-JdY0uPT6HbpkiBakTSOP3ZgKOKUVWWeCdDUss35Ss1hhaE1KWrUWb9OiFhx49vH4rFWXFVPo32NFRpy_HNu2HtsKQqRO2JGWqcfnHWn03sSRkLgTjijbY5itQjBf3UT9u-YgZtB3PNHKKAdpJYBVdVNKuLb-Q5tZ7zgNVUYB_xwoI"/>
+</div>
+</div>
+</div>
+</section>
+<footer class="w-full py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-20 max-w-[1280px] mx-auto gap-6">
+<div class="text-lg font-bold text-slate-800 dark:text-slate-200">
+                Akademi Suit
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] text-xs font-medium hover:underline decoration-purple-500 underline-offset-4 transition-all" href="#">
+                    Privacy Policy
+                </a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] text-xs font-medium hover:underline decoration-purple-500 underline-offset-4 transition-all" href="#">
+                    Terms of Service
+                </a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] text-xs font-medium hover:underline decoration-purple-500 underline-offset-4 transition-all" href="#">
+                    Contact
+                </a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-purple-500 font-['Epilogue'] text-xs font-medium hover:underline decoration-purple-500 underline-offset-4 transition-all" href="#">
+                    Location
+                </a>
+</div>
+<div class="text-purple-600 dark:text-purple-400 font-['Epilogue'] text-xs font-medium">
+                © 2024 Akademi Suit. Premium Student Living.
+            </div>
+</div>
+</footer>
+
+</body></html>

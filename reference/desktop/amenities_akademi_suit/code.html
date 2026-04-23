@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Akademi Suit - Premium Amenities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#7f5300",
+                        "on-primary-fixed": "#001c39",
+                        "inverse-primary": "#a4c9ff",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-secondary-fixed": "#1d0061",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2e3036",
+                        "secondary-fixed-dim": "#cbbeff",
+                        "tertiary-fixed-dim": "#ffb953",
+                        "surface-container": "#ecedf5",
+                        "secondary": "#6151a8",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d4e3ff",
+                        "accent-boys": "#4682B4",
+                        "outline": "#717783",
+                        "inverse-on-surface": "#eff0f8",
+                        "on-surface-variant": "#414751",
+                        "white-glass": "rgba(255, 255, 255, 0.6)",
+                        "surface-tint": "#0060ac",
+                        "surface": "#F8FAFC",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ef",
+                        "on-secondary-fixed-variant": "#49388f",
+                        "on-primary-fixed-variant": "#004883",
+                        "text-main": "#1E293B",
+                        "surface-variant": "#e1e2e9",
+                        "secondary-container": "#b2a1ff",
+                        "accent-girls": "#A594F1",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fdfcff",
+                        "on-background": "#191c21",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-highest": "#e1e2e9",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-dim": "#d8dae1",
+                        "on-tertiary-fixed": "#291800",
+                        "background": "#f8f9ff",
+                        "primary": "#005da7",
+                        "on-surface": "#191c21",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f3fb",
+                        "tertiary-container": "#a06900",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffddb4",
+                        "primary-container": "#2976c7",
+                        "outline-variant": "#c1c7d3",
+                        "secondary-fixed": "#e6deff",
+                        "on-secondary-container": "#443289"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "md": "24px",
+                        "container-max": "1280px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Epilogue"],
+                        "caption": ["Inter"],
+                        "h3": ["Epilogue"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Epilogue"],
+                        "cta-label": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.25", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.25", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "fontWeight": "700" }],
+                        "cta-label": ["16px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container">
+<nav class="fixed top-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border-b border-white/20 dark:border-slate-800/20 shadow-none">
+<div class="flex justify-between items-center px-6 md:px-20 h-20 w-full max-w-[1280px] mx-auto">
+<a class="text-xl font-bold text-slate-900 dark:text-white font-['Epilogue'] tracking-tight" href="#">Akademi Suit</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors font-body-md text-body-md" href="#">Rooms</a>
+<a class="text-blue-600 dark:text-blue-400 font-bold border-b-2 border-blue-600 dark:border-blue-400 pb-1 font-body-md text-body-md" href="#">Amenities</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors font-body-md text-body-md" href="#">Location</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors font-body-md text-body-md" href="#">Gallery</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors font-body-md text-body-md" href="#">About</a>
+</div>
+<button class="bg-primary text-on-primary font-cta-label text-cta-label px-6 py-3 rounded-xl hover:opacity-80 transition-opacity">
+                Apply Now
+            </button>
+</div>
+</nav>
+<main class="pt-20">
+<section class="relative min-h-[614px] flex items-center justify-center pt-xl pb-lg px-md md:px-xl overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Students working collaboratively in a modern, well-lit study space with large windows and comfortable seating" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcmiWg1x4BZIaSKbg3C06B8QaITaxuL8Ptk0KkSwkjXsiLm3mKAIC3MVniNPwKXOHrwWuZ30K2_1qra-9-E-xxV61gIcKrHkjF2F544OoS7rDzJ_vwUGpNKuHjGk-R-nCWfv51zfpXOGbE9KzWIPocpCuc0TooKT90e2neYIBZXVcxS524j2-L-26j8lJwPU2rltNI-H6A4hDLKyBwcWjJrDr3IgX3C4WrlIZquLxW7LUp9ZvgqbI0f1DNSp8fix0CZJ7aG1vcuGo"/>
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-sm"></div>
+</div>
+<div class="relative z-10 text-center max-w-3xl mx-auto glass-panel p-lg shadow-2xl">
+<h1 class="font-h1 text-h1 text-on-surface mb-6">Premium Amenities for Your Best Life</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Experience a living environment meticulously designed to support your academic success and personal well-being. Our state-of-the-art facilities offer the perfect balance of focus, fitness, and community.
+                </p>
+</div>
+</section>
+<section class="py-xl relative overflow-hidden bg-surface-container-low/30">
+<div class="max-w-[1440px] mx-auto px-4 md:px-0 relative flex items-center justify-center min-h-[600px]">
+<button class="absolute left-4 md:left-8 z-30 w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">chevron_left</span>
+</button>
+<button class="absolute right-4 md:right-8 z-30 w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">chevron_right</span>
+</button>
+<div class="flex items-center justify-center gap-4 md:gap-12 w-full">
+<div class="hidden lg:flex flex-col w-[300px] shrink-0 blur-md scale-90 opacity-40 glass-panel p-4 pointer-events-none select-none">
+<div class="h-40 rounded-xl overflow-hidden mb-4">
+<div class="w-full h-full bg-gradient-to-br from-surface-variant to-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface text-5xl">security</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-xl">admin_panel_settings</span>
+<h3 class="font-h3 text-lg text-text-main">24/7 Security</h3>
+</div>
+</div>
+<div class="z-20 w-full max-w-[650px] transform glass-panel p-6 md:p-8 shadow-2xl bg-white-glass border-white/40">
+<div class="h-64 md:h-80 rounded-xl overflow-hidden mb-8 relative">
+<img alt="Modern fitness center with premium cardio and strength equipment" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFzxyjlRIatQErqFBnElXV6iSTNUSpvSiZYoGrGH5GoxlxG4mMNvF2chpqe3LPDgjJeghfFG9B1NZWxlUlKuIx_vsPtqhOxFBWdea-yp3QWb01LkxdKi5oRWUzFtvM7bob2a15LsDoeyrp9j7C2Yq2tBss3EEA7_UxRChaIVAY6X4VWUhsg4FWapDI_m2l6n8avCi44lE2GXP-f0OoTJbd87pKt8NzGtTWcaaTTYNxFNeQG5DWifM-tlZGlwHzmet1GOGw2EG21LE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<div class="flex items-center gap-6 mb-6">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">fitness_center</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-text-main">Fitness Center</h3>
+<p class="font-caption text-primary font-bold tracking-wider uppercase">Premium Facility</p>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-4">
+                            High-end equipment for all workout levels. Stay active without leaving the building. Our fitness center features state-of-the-art cardio machines, free weights, and a dedicated stretching area.
+                        </p>
+</div>
+<div class="hidden lg:flex flex-col w-[300px] shrink-0 blur-md scale-90 opacity-40 glass-panel p-4 pointer-events-none select-none">
+<div class="h-40 rounded-xl overflow-hidden mb-4">
+<img alt="Serene, minimalist study room" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXWnqxTAZdmKsiNoRULvauaH5V-0d226-EdKGqMTrek4axN8gEBuHFqhxb-Pa5k3-ejAlpTZMEet04wM5bDU3N9VPx3EC_A9qEcSEYyL2QDMWYOaPzIFm_QNB_TIiY45UIBp3qRrgsw2RWo_POais9oSMWk80FuyVwME2T7aNU7uFezL1JO1Ay_8c4ktPzKxWoVAzz6n-ruLrJBDeQu-mESIydAzjlLsRP794OtH8gNalUEwlctz00Vax8PAm9PkOfWEDBZbYdBpU"/>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-xl">local_library</span>
+<h3 class="font-h3 text-lg text-text-main">Quiet Study Zones</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-3 mt-12">
+<span class="w-12 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+</section>
+<section class="py-lg px-md md:px-xl max-w-container-max mx-auto border-t border-surface-container">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<div class="flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 group-hover:scale-110 transition-transform">weekend</span>
+<span class="font-body-md font-medium text-text-main">Social Lounge</span>
+</div>
+<div class="flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 group-hover:scale-110 transition-transform">wifi</span>
+<span class="font-body-md font-medium text-text-main">High-Speed Wi-Fi</span>
+</div>
+<div class="flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 group-hover:scale-110 transition-transform">deck</span>
+<span class="font-body-md font-medium text-text-main">Rooftop Terrace</span>
+</div>
+<div class="flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 group-hover:scale-110 transition-transform">local_library</span>
+<span class="font-body-md font-medium text-text-main">Study Zones</span>
+</div>
+<div class="flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 group-hover:scale-110 transition-transform">admin_panel_settings</span>
+<span class="font-body-md font-medium text-text-main">24/7 Security</span>
+</div>
+<div class="flex flex-col items-center text-center p-4 rounded-2xl bg-primary/5 border border-primary/20 group">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 group-hover:scale-110 transition-transform">fitness_center</span>
+<span class="font-body-md font-bold text-primary">Gym</span>
+</div>
+</div>
+</section>
+<section class="py-xl px-md text-center max-w-4xl mx-auto">
+<h2 class="font-h2 text-h2 text-text-main mb-6">Ready to Experience Premium Living?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">Secure your spot for the upcoming academic year.</p>
+<button class="bg-primary text-on-primary font-cta-label text-cta-label px-8 py-4 rounded-xl hover:bg-primary-container transition-colors shadow-sm">
+                Apply Now
+            </button>
+</section>
+</main>
+<footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-[1280px] mx-auto px-6 md:px-20 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-lg font-bold text-slate-900 dark:text-white font-['Epilogue']">Akademi Suit</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Epilogue'] text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Epilogue'] text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="#">Student Handbook</a>
+<a class="font-['Epilogue'] text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="#">Parent Portal</a>
+<a class="font-['Epilogue'] text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" href="#">Contact Support</a>
+</div>
+<div class="font-['Epilogue'] text-sm text-slate-500 dark:text-slate-500 text-center md:text-right">
+                © 2024 Akademi Suit Premium Dormitory. All rights reserved.
+            </div>
+</div>
+</footer>
+
+</body></html>
