@@ -1,0 +1,40 @@
+# Akademi Suit - URL-First Routing for cPanel Static Hosting
+# Enables SPA-like URL routing for /kiz and /erkek theme paths
+
+RewriteEngine On
+RewriteBase /
+
+# If the requested file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route virtual theme paths to index.html
+# e.g., /kiz, /erkek, /kiz-yurdu, /erkek-yurdu
+RewriteRule ^(kiz|erkek|kiz-yurdu|erkek-yurdu)/?$ /index.html [L,QSA]
+
+# Fallback: any other non-file request goes to index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# Security: Deny access to dotfiles (except .htaccess itself)
+<FilesMatch "^\.(?!htaccess)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Performance: Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Performance: Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

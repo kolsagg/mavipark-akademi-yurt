@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-24T02:45:05+03:00
-last_updated: 2026-04-24T02:45:05+03:00
+last_updated: 2026-04-24T02:52:00+03:00
 project: akademi_yurt
 project_key: NOKEY
 tracking_system: file-system
@@ -43,7 +43,7 @@ story_location: _bmad-output/implementation-artifacts
 
 development_status:
   epic-1: in-progress
-  1-1-vite-projesinin-baslatilmasi-ve-moduler-klasor-yapisi: ready-for-dev
+  1-1-vite-projesinin-baslatilmasi-ve-moduler-klasor-yapisi: review
   1-2-tasarim-sistemi-tokens-ve-handlebars-kurulumu: backlog
   epic-1-retrospective: optional
   epic-2: backlog
