@@ -6,6 +6,7 @@
 import './styles/design-tokens.css';
 import './styles/main.css';
 import { animationEngine } from './core/AnimationEngine';
+import { initSplitHero } from './components/SplitHero';
 
 /**
  * Application bootstrap
@@ -22,13 +23,8 @@ function initApp() {
     return;
   }
 
-  // Placeholder content
-  app.innerHTML = `
-    <main class="app-container">
-      <h1>Akademi Suit</h1>
-      <p>Premium Öğrenci Yurdu</p>
-    </main>
-  `;
+  // Initialize SplitHero interactions
+  initSplitHero();
 
   console.info('[AkademiSuit] App initialized');
 }
@@ -42,6 +38,11 @@ function triggerPreloaderExit() {
   setTimeout(() => {
     animationEngine.exitPreloader().then(() => {
       console.info('[AkademiSuit] Preloader exit complete');
+      
+      // Start Split Hero Intro Animation
+      animationEngine.introSplitHero().then(() => {
+        console.info('[AkademiSuit] Hero intro complete');
+      });
     });
   }, 500);
 }

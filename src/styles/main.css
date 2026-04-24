@@ -9,5 +9,5 @@
 /* Component stilleri */
 @import './components/_preloader.css';
 /* @import './components/glass-card.css'; */
-/* @import './components/split-hero.css'; */
+@import './components/_split-hero.css';
 /* ... */

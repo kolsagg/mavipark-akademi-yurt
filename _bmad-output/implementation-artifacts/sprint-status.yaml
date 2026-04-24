@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-24T02:45:05+03:00
-last_updated: 2026-04-24T12:08:00+03:00
+last_updated: 2026-04-24T12:13:00+03:00
 project: akademi_yurt
 project_key: NOKEY
 tracking_system: file-system
@@ -48,7 +48,7 @@ development_status:
   epic-1-retrospective: done
   epic-2: in-progress
   2-1-marka-logolu-preloader-animasyonu: done
-  2-2-dikey-split-screen-hero-yapisi-ve-giris-animasyonu: backlog
+  2-2-dikey-split-screen-hero-yapisi-ve-giris-animasyonu: review
   2-3-thememanager-js-ve-url-first-tema-mantigi: backlog
   2-4-dinamik-navigasyon-ve-bolum-degistirici: backlog
   epic-2-retrospective: optional

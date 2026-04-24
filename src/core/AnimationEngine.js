@@ -77,6 +77,63 @@ class AnimationEngine {
       });
     });
   }
+  /**
+   * Animates the intro of the split hero panels
+   */
+  introSplitHero() {
+    return new Promise((resolve) => {
+      // If elements don't exist, resolve immediately
+      if (!document.querySelector('.split-hero')) {
+        resolve();
+        return;
+      }
+
+      this.ctx.add(() => {
+        const tl = gsap.timeline({ onComplete: () => resolve() });
+        
+        if (this.isReducedMotion) {
+          gsap.set('.split-hero__content', { opacity: 1, y: 0 });
+          return tl.to('.split-hero', { opacity: 1, duration: 0.5 });
+        }
+
+        // Set initial states for animation
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+          gsap.set('.split-hero__panel--girls', { yPercent: -100 });
+          gsap.set('.split-hero__panel--boys', { yPercent: 100 });
+        } else {
+          gsap.set('.split-hero__panel--girls', { xPercent: -100 });
+          gsap.set('.split-hero__panel--boys', { xPercent: 100 });
+        }
+        gsap.set('.split-hero__content', { opacity: 0, y: 30 });
+
+        // Intro animation
+        tl.to(['.split-hero__panel--girls', '.split-hero__panel--boys'], {
+          xPercent: 0,
+          yPercent: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          stagger: 0.1
+        })
+        .to('.split-hero__content', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.15
+        }, '-=0.6');
+      });
+    });
+  }
+
+  /**
+   * Cleans up GSAP context
+   */
+  destroy() {
+    if (this.ctx) {
+      this.ctx.revert();
+    }
+  }
 }
 
 export const animationEngine = new AnimationEngine();
