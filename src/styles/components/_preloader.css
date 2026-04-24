@@ -80,6 +80,6 @@
 @media (prefers-reduced-motion: reduce) {
   .preloader__content {
     backdrop-filter: none;
-    background: rgba(var(--color-anthracite), 0.95);
+    background: rgba(26, 26, 26, 0.95);
   }
 }

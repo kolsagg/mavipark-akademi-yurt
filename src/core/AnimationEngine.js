@@ -68,7 +68,8 @@ class AnimationEngine {
               ease: 'power4.in' 
             }, '-=0.2')
             .to('.preloader', { 
-              clipPath: 'circle(0% at 50% 50%)', 
+              opacity: 0, 
+              scale: 0.95, 
               duration: 0.8, 
               ease: 'power4.inOut' 
             }, '-=0.3');

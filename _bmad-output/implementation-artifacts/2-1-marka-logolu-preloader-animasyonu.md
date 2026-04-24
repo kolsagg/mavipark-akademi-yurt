@@ -144,6 +144,14 @@ akademi_yurt/
 
 ---
 
+### Review Findings
+
+- [x] [Review][Patch] `rgba(var(--color-anthracite))` geçersiz CSS sözdizimi [`_preloader.css:82`] ✅ Fixed
+- [x] [Review][Patch] `clipPath` animasyonu GPU uyumsuz + spec ihlali [`AnimationEngine.js:73`] ✅ Fixed
+- [x] [Review][Patch] `document.readyState` fallback eksik [`main.js:38-42`] ✅ Fixed
+- [x] [Review][Patch] Preloader'da ARIA desteği eksik [`_preloader.hbs`] ✅ Fixed
+- [x] [Review][Defer] `will-change` sadece `__content` üzerinde [`_preloader.css:46`] — deferred, pre-existing
+
 ## 📂 File List
 - `index.html`
 - `src/main.js`
@@ -155,7 +163,7 @@ akademi_yurt/
 ## 🔄 Change Log
 - 2026-04-24: Story başlatıldı ve görevler tanımlandı.
 
-**Status:** review
+**Status:** done
 
 **Completion Status:**
 - [x] Ultimate context engine analysis completed - comprehensive developer guide created

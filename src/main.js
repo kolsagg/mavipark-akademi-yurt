@@ -37,11 +37,18 @@ function initApp() {
 document.addEventListener('DOMContentLoaded', initApp);
 
 // Exit preloader when everything is fully loaded
-window.addEventListener('load', () => {
+function triggerPreloaderExit() {
   // Small delay for perceived performance/aesthetic
   setTimeout(() => {
     animationEngine.exitPreloader().then(() => {
       console.info('[AkademiSuit] Preloader exit complete');
     });
   }, 500);
-});
+}
+
+// Fallback: if load event already fired before listener attached
+if (document.readyState === 'complete') {
+  triggerPreloaderExit();
+} else {
+  window.addEventListener('load', triggerPreloaderExit);
+}
