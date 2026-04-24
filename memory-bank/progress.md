@@ -11,8 +11,9 @@
 - [x] Sprint Planlama ve Durum Takibi Kurulumu (`sprint-status.yaml`)
 
 ## Yapılacaklar (Backlog)
-- [ ] Vite Projesi Başlatma (Epic 1.1)
-- [ ] CSS Tasarım Sistemi (Tokens) kurulumu.
+- [x] Vite Projesi Başlatma (Epic 1.1)
+- [x] CSS Tasarım Sistemi (Tokens) ve Handlebars kurulumu (Epic 1.2)
+- [ ] Marka Logolu Preloader Animasyonu (Story 2.1)
 - [ ] Split Entry Home Page geliştirilmesi.
 - [ ] Kız Öğrenci Yurdu alt sayfası.
 - [ ] Erkek Öğrenci Yurdu alt sayfası.
@@ -25,4 +26,4 @@
 - Henüz kodlama aşamasına geçilmediği için aktif bir bug bulunmuyor.
 
 ## Durum Özeti
-Proje planlama, dokümantasyon ve kapsamlı UX/UI spesifikasyon aşaması başarıyla tamamlandı. Artık doğrudan Vite ortamının kurulması ve teknik mimarinin (veya wireframe/prototipleme adımlarının) oluşturulmasına geçilebilir.
+Proje planlama ve teknik altyapı (Epic 1) başarıyla tamamlandı. Vite projesi kuruldu, tasarım token'ları ve Handlebars altyapısı hazırlandı. Şimdi Epic 2: Split-Screen Giriş ve Dinamik Temalandırma aşamasına geçildi ve ilk hikaye (Preloader) için hazırlıklar tamamlandı.

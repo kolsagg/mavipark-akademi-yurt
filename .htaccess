@@ -18,7 +18,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 
 # Security: Deny access to dotfiles (except .htaccess itself)
-<FilesMatch "^\.(?!htaccess)">
+<FilesMatch "^\.(?!well-known|htaccess)">
     Order allow,deny
     Deny from all
 </FilesMatch>

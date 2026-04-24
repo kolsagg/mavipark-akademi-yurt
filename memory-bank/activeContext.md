@@ -4,15 +4,15 @@
 - "Epik ve Hikaye Oluşturma" (bmad-create-epics-and-stories) iş akışı tamamlandı.
 - "Sprint Planlama" (bmad-sprint-planning) iş akışı tamamlandı.
 - `_bmad-output/planning-artifacts/epics.md` dosyası 5 epik ve detaylı kullanıcı hikayeleriyle oluşturuldu.
-- Tüm FR, NFR, AR ve UX-DR gereksinimlerinin hikaye kapsamı doğrulandı.
+- Epic 1: Teknik Altyapı (Story 1.1 ve 1.2) tamamlandı. Tasarım token'ları, base CSS ve Handlebars kurulumu yapıldı.
+- Story 2.1: Marka Logolu Preloader Animasyonu hikaye dosyası oluşturuldu ve `ready-for-dev` durumuna getirildi.
 
-## Aktif Odak
-- Planlama fazından Uygulama (Implementation) fazına geçiş.
-- İlk sprint planlamasının yapılması ve Vite projesinin başlatılması.
+- Epic 2: Split-Screen Giriş ve Dinamik Temalandırma implementasyonu.
+- Story 2.1 (Preloader) geliştirilmesi.
 
-## Gelecek Adımlar
 - [x] Sprint planlaması yapıldı ve `sprint-status.yaml` oluşturuldu.
-- [ ] Vite ile proje iskeletinin kurulması ve CSS değişkenlerinin kodlanması (Story 1.1).
+- [x] Vite projesi kuruldu ve Tasarım Sistemi (Tokens) kodlandı (Epic 1).
+- [ ] Story 2.1: Marka Logolu Preloader Animasyonu implementasyonu.
 
 ## Aktif Kararlar
 - Proje ismi olarak "Akademi Suit" veya "Akademi Yurt" kullanılacak (genel dosya adı: akademi_yurt).

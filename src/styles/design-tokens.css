@@ -1,0 +1,176 @@
+/**
+ * Akademi Suit - Design Tokens
+ * Üç Katmanlı Token Mimarisi: Primitive → Semantic → Theme Override
+ *
+ * KURAL: Bileşenler SADECE semantic token'ları kullanır.
+ *        Primitive değerlere doğrudan referans YASAKTIR.
+ */
+
+/* ===================================================
+   1. PRIMITIVE TOKENS — Gerçek Renk Değerleri
+   =================================================== */
+:root {
+  /* --- Kız Yurdu: Lila/Mor Paleti --- */
+  --color-lilac-50: #F3E8F9;
+  --color-lilac-100: #E1C4F0;
+  --color-lilac-200: #CE9FE6;
+  --color-lilac-300: #BB7ADC;
+  --color-lilac-400: #AB64D5;
+  --color-lilac-500: #9B59B6;
+  --color-lilac-600: #8B4FAF;
+  --color-lilac-700: #7841A4;
+  --color-lilac-800: #653498;
+  --color-lilac-900: #461F82;
+
+  /* --- Erkek Yurdu: Çelik Mavisi Paleti --- */
+  --color-steel-50: #E3F0FA;
+  --color-steel-100: #B8D9F2;
+  --color-steel-200: #8CC1EA;
+  --color-steel-300: #5FA8E1;
+  --color-steel-400: #3D95DA;
+  --color-steel-500: #2980B9;
+  --color-steel-600: #2472A8;
+  --color-steel-700: #1C6192;
+  --color-steel-800: #15507C;
+  --color-steel-900: #0B3459;
+
+  /* --- Nötr / Ortak --- */
+  --color-white: #FFFFFF;
+  --color-white-rgb: 255, 255, 255;
+  --color-black: #0A0A0A;
+  --color-anthracite: #1A1A1A;
+  --color-gray-dark: #333333;
+  --color-gray-mid: #666666;
+  --color-gray-light: #999999;
+
+  /* --- Glassmorphism Surface --- */
+  --color-glass-white: rgba(var(--color-white-rgb), 0.7);
+  --color-glass-white-light: rgba(var(--color-white-rgb), 0.4);
+}
+
+
+/* ===================================================
+   2. SEMANTIC TOKENS — Tema-Bağımlı Değişkenler
+   =================================================== */
+:root {
+  /* Default tema (nötr/landing) */
+  --theme-primary: var(--color-lilac-500);
+  --theme-primary-dark: var(--color-lilac-700);
+  --theme-accent: var(--color-lilac-900);
+  --theme-surface: var(--color-glass-white);
+  --theme-bg: var(--color-black);
+  --theme-text: var(--color-anthracite);
+  --theme-text-light: var(--color-gray-dark);
+}
+
+/* Kız Yurdu Tema Override */
+body[data-theme="girls"] {
+  --theme-primary: var(--color-lilac-500);
+  --theme-primary-dark: var(--color-lilac-700);
+  --theme-accent: var(--color-lilac-900);
+}
+
+/* Erkek Yurdu Tema Override */
+body[data-theme="boys"] {
+  --theme-primary: var(--color-steel-500);
+  --theme-primary-dark: var(--color-steel-700);
+  --theme-accent: var(--color-steel-900);
+}
+
+
+/* ===================================================
+   3. TİPOGRAFİ TOKENS
+   =================================================== */
+:root {
+  /* Font Aileleri */
+  --font-heading: 'Epilogue', 'Montserrat', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Font Boyutları */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  --font-size-hero: 4rem;     /* 64px - Hero başlıklar */
+
+  /* Satır Aralıkları */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Font Ağırlıkları */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Harf Aralıkları */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+}
+
+
+/* ===================================================
+   4. SPACING TOKENS (8px Sistemi)
+   =================================================== */
+:root {
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-8: 3rem;     /* 48px */
+  --space-10: 4rem;    /* 64px */
+  --space-12: 6rem;    /* 96px */
+  --space-16: 8rem;    /* 128px */
+}
+
+
+/* ===================================================
+   5. Z-INDEX, BLUR, RADIUS, SHADOW, TRANSITION
+   =================================================== */
+:root {
+  /* Z-Index Katmanları */
+  --z-base: 1;
+  --z-overlay: 10;
+  --z-nav: 100;
+  --z-modal: 200;
+  --z-floating-cta: 300;
+  --z-preloader: 999;
+
+  /* Glassmorphism Blur */
+  --blur-glass: 20px;
+  --blur-glass-light: 10px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Box Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  /* Transition */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/*
+ * BREAKPOINT REFERANSLARI (CSS'de değişken olarak kullanılmaz)
+ * Mobile (default): < 768px
+ * Tablet: @media (min-width: 768px)
+ * Desktop: @media (min-width: 1024px)
+ * Wide: @media (min-width: 1440px)
+ */
