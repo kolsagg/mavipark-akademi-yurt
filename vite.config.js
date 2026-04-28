@@ -15,8 +15,8 @@ export default defineConfig({
       partialDirectory: resolve(__dirname, 'src/partials'),
       context: {
         siteName: 'Akademi Suit',
-        siteDescription: 'Akademi Suit - Premium Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.',
         phoneNumber: '+90 XXX XXX XX XX',
+        siteDescription: 'Akademi Suit - Premium Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.',
       },
       helpers: {
         or: (a, b) => a || b,
@@ -26,11 +26,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        yurt: resolve(__dirname, 'yurt.html'),
       },
     },
+  },
+  esbuild: {
+    pure: ['console.log', 'console.info', 'console.debug', 'console.trace'],
   },
   server: {
     open: true,

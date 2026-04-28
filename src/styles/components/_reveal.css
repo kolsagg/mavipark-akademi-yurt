@@ -1,0 +1,18 @@
+/**
+ * Akademi Suit - Reveal Animations
+ * Initial states for scroll-triggered elements
+ */
+
+[data-reveal],
+[data-reveal-batch] {
+  opacity: 0;
+  visibility: hidden; /* Prevent interaction and pop-in */
+}
+
+/* Optimization: will-change only for specific animations */
+[data-reveal].is-animating,
+[data-reveal-batch].is-animating {
+  will-change: transform, opacity;
+}
+
+/* Reduced motion fallback handled in ScrollEngine.js */

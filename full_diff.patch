@@ -1,0 +1,632 @@
+diff --git a/index.html b/index.html
+index 3b449c2..000d7de 100644
+--- a/index.html
++++ b/index.html
+@@ -17,6 +17,7 @@
+   </head>
+   <body>
+     {{> _preloader }}
++    {{> _header }}
+     <div id="app">
+       {{> _split-hero }}
+     </div>
+diff --git a/src/main.js b/src/main.js
+index f2b9e79..48d87d0 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -7,12 +7,20 @@ import './styles/design-tokens.css';
+ import './styles/main.css';
+ import { animationEngine } from './core/AnimationEngine';
+ import { initSplitHero } from './components/SplitHero';
++import ThemeManager from './core/ThemeManager';
++import Navigation from './components/Navigation';
+ 
+ /**
+  * Application bootstrap
+  * Initializes global state and mounts components
+  */
+ function initApp() {
++  // Initialize URL-First Theme Management
++  ThemeManager.init();
++
++  // Initialize Navigation Switcher
++  Navigation.init();
++
+   // Start preloader visuals immediately
+   animationEngine.initPreloader();
+ 
+diff --git a/src/styles/main.css b/src/styles/main.css
+index bef4b09..2c02bcd 100644
+--- a/src/styles/main.css
++++ b/src/styles/main.css
+@@ -10,4 +10,5 @@
+ @import './components/_preloader.css';
+ /* @import './components/glass-card.css'; */
+ @import './components/_split-hero.css';
++@import './components/_navigation.css';
+ /* ... */
+diff --git a/src/components/Navigation.js b/src/components/Navigation.js
+new file mode 100644
+index 0000000..eefc120
+--- /dev/null
++++ b/src/components/Navigation.js
+@@ -0,0 +1,121 @@
++import gsap from 'gsap';
++import ThemeManager from '../core/ThemeManager.js';
++
++/**
++ * Navigation Component
++ * Handles the theme switcher and header interactions.
++ */
++class Navigation {
++  static init() {
++    this.buttons = document.querySelectorAll('.js-nav-btn');
++    this.pill = document.querySelector('.js-nav-pill');
++    this.header = document.querySelector('.header');
++
++    // Create GSAP context for easy cleanup
++    this.ctx = gsap.context(() => {
++      this.initEvents();
++      this.initScroll();
++      
++      // Initial sync with current theme
++      const currentTheme = document.body.dataset.theme;
++      if (currentTheme) {
++        this.updatePill(currentTheme, false);
++      } else {
++        // If no theme, hide pill
++        if (this.pill) gsap.set(this.pill, { opacity: 0 });
++      }
++    });
++  }
++
++  /**
++   * Initializes event listeners for buttons and theme changes
++   */
++  static initEvents() {
++    this.menuToggle = document.querySelector('.js-menu-toggle');
++    this.nav = document.querySelector('.nav');
++
++    if (this.menuToggle && this.nav) {
++      this.menuToggle.addEventListener('click', () => {
++        this.nav.classList.toggle('nav--visible');
++      });
++    }
++
++    this.buttons.forEach(btn => {
++      btn.addEventListener('click', () => {
++        const targetTheme = btn.dataset.themeTarget;
++        ThemeManager.setTheme(targetTheme);
++      });
++    });
++
++    // Listen for theme changes from anywhere (ThemeManager, SplitHero, etc.)
++    window.addEventListener('themeChanged', (e) => {
++      const { theme } = e.detail;
++      this.updatePill(theme);
++    });
++  }
++
++  /**
++   * Handles header appearance on scroll
++   */
++  static initScroll() {
++    if (!this.header) return;
++
++    const handleScroll = () => {
++      if (window.scrollY > 50) {
++        this.header.classList.add('header--scrolled');
++      } else {
++        this.header.classList.remove('header--scrolled');
++      }
++    };
++
++    window.addEventListener('scroll', handleScroll, { passive: true });
++  }
++
++  /**
++   * Updates the switcher pill position and active state
++   * @param {string|null} theme - 'girls' or 'boys' or null
++   * @param {boolean} animate - whether to animate the transition
++   */
++  static updatePill(theme, animate = true) {
++    if (!this.pill || !this.buttons.length) return;
++
++    const targetBtn = Array.from(this.buttons).find(btn => btn.dataset.themeTarget === theme);
++    
++    // Reset aria-pressed for all buttons
++    this.buttons.forEach(btn => btn.setAttribute('aria-pressed', 'false'));
++
++    if (!targetBtn || !theme) {
++      gsap.to(this.pill, { 
++        opacity: 0, 
++        duration: animate ? 0.3 : 0,
++        ease: 'power2.inOut'
++      });
++      return;
++    }
++
++    // Set active button
++    targetBtn.setAttribute('aria-pressed', 'true');
++    
++    const { offsetLeft, offsetWidth } = targetBtn;
++
++    // Animate pill to target button position
++    gsap.to(this.pill, {
++      left: offsetLeft,
++      width: offsetWidth,
++      opacity: 1,
++      duration: animate ? 0.5 : 0,
++      ease: 'elastic.out(1, 0.8)' // Premium bouncy feel
++    });
++  }
++
++  /**
++   * Cleans up GSAP context and listeners
++   */
++  static cleanup() {
++    if (this.ctx) {
++      this.ctx.revert();
++    }
++  }
++}
++
++export default Navigation;
+diff --git a/src/core/ThemeManager.js b/src/core/ThemeManager.js
+new file mode 100644
+index 0000000..040e30a
+--- /dev/null
++++ b/src/core/ThemeManager.js
+@@ -0,0 +1,82 @@
++class ThemeManager {
++  /**
++   * Initializes the ThemeManager
++   */
++  static init() {
++    // Read theme from URL on load
++    const theme = this.getThemeFromURL();
++    this.applyTheme(theme); // Apply even if null to ensure clean state
++
++    // Listen for history changes
++    window.addEventListener('popstate', () => {
++      const newTheme = this.getThemeFromURL();
++      this.applyTheme(newTheme, false); // false to avoid recursive pushState
++    });
++  }
++
++  /**
++   * Reads theme from URL search params or path
++   * @returns {string|null} 'girls' or 'boys' or null
++   */
++  static getThemeFromURL() {
++    const params = new URLSearchParams(window.location.search);
++    const type = params.get('type')?.toLowerCase();
++    
++    if (type === 'girls' || type === 'boys') {
++      return type;
++    }
++
++    // Fallback to pathname (check segments for precision)
++    const pathSegments = window.location.pathname.toLowerCase().split('/');
++    if (pathSegments.includes('kiz')) return 'girls';
++    if (pathSegments.includes('erkek')) return 'boys';
++
++    return null;
++  }
++
++  /**
++   * Applies the theme to the body and dispatches event
++   * @param {string|null} theme - 'girls' or 'boys' or null
++   * @param {boolean} [updateHistory=true] - whether to update URL history
++   */
++  static applyTheme(theme, updateHistory = true) {
++    // If theme is null, we can either clear it or keep default. 
++    // Requirements say URL-First, so we clear if URL has no preference.
++    if (theme && theme !== 'girls' && theme !== 'boys') return;
++
++    if (theme) {
++      document.body.dataset.theme = theme;
++      if (updateHistory) this.updateURL(theme);
++    } else {
++      delete document.body.dataset.theme;
++    }
++
++    // Dispatch CustomEvent regardless of choice to let subscribers sync
++    const event = new CustomEvent('themeChanged', { detail: { theme } });
++    window.dispatchEvent(event);
++  }
++
++  /**
++   * Updates the URL search params without reloading the page
++   * @param {string} theme - 'girls' or 'boys'
++   */
++  static updateURL(theme) {
++    if (theme !== 'girls' && theme !== 'boys') return;
++
++    const url = new URL(window.location.href || 'http://localhost');
++    url.searchParams.set('type', theme);
++    
++    // We only want the path and search for pushState
++    const newUrl = url.pathname + url.search;
++    window.history.pushState({}, '', newUrl);
++  }
++
++  /**
++   * Convenience method to set theme externally
++   */
++  static setTheme(theme) {
++    this.applyTheme(theme, true);
++  }
++}
++
++export default ThemeManager;
+diff --git a/src/partials/_header.hbs b/src/partials/_header.hbs
+new file mode 100644
+index 0000000..cc2e1fa
+--- /dev/null
++++ b/src/partials/_header.hbs
+@@ -0,0 +1,26 @@
++<header class="header">
++  <div class="header__container">
++    <div class="header__logo">
++      <a href="/" class="logo">
++        <span class="logo__text">AKADEMİ</span>
++        <span class="logo__sub">YURTLARI</span>
++      </a>
++    </div>
++
++    <nav class="nav">
++      <div class="nav__switcher">
++        <div class="nav__switcher-pill js-nav-pill"></div>
++        <button class="nav__switcher-btn js-nav-btn" data-theme-target="girls" aria-pressed="false">KIZ</button>
++        <button class="nav__switcher-btn js-nav-btn" data-theme-target="boys" aria-pressed="false">ERKEK</button>
++      </div>
++    </nav>
++
++    <div class="header__actions">
++      <button class="header__menu-toggle js-menu-toggle" aria-label="Menü">
++        <span></span>
++        <span></span>
++      </button>
++      <a href="#contact" class="btn-cta">İLETİŞİM</a>
++    </div>
++  </div>
++</header>
+diff --git a/src/styles/components/_navigation.css b/src/styles/components/_navigation.css
+new file mode 100644
+index 0000000..2f3e9f2
+--- /dev/null
++++ b/src/styles/components/_navigation.css
+@@ -0,0 +1,199 @@
++/**
++ * Navigation Component Styles
++ * Header, Logo, and Theme Switcher
++ */
++
++.header {
++  position: fixed;
++  top: 0;
++  left: 0;
++  width: 100%;
++  z-index: var(--z-nav);
++  padding: var(--space-4) 0;
++  transition: background var(--transition-base), padding var(--transition-base), border var(--transition-base);
++  backdrop-filter: blur(var(--blur-glass-light));
++  background: var(--color-glass-white);
++  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
++}
++
++.header--scrolled {
++  padding: var(--space-2) 0;
++  background: var(--color-glass-white);
++  box-shadow: var(--shadow-sm);
++}
++
++.header__container {
++  max-width: 1440px;
++  margin: 0 auto;
++  padding: 0 var(--space-6);
++  display: flex;
++  justify-content: space-between;
++  align-items: center;
++}
++
++/* Logo */
++.logo {
++  display: flex;
++  flex-direction: column;
++  text-decoration: none;
++  color: var(--theme-text);
++  transition: color var(--transition-base);
++}
++
++.logo__text {
++  font-family: var(--font-heading);
++  font-size: var(--font-size-xl);
++  font-weight: var(--font-weight-bold);
++  letter-spacing: var(--letter-spacing-tight);
++  line-height: 1;
++}
++
++.logo__sub {
++  font-size: var(--font-size-xs);
++  font-weight: var(--font-weight-medium);
++  letter-spacing: 0.2em;
++  color: var(--theme-primary);
++  margin-top: 2px;
++  transition: color var(--transition-base);
++}
++
++/* Navigation Switcher */
++.nav__switcher {
++  position: relative;
++  display: flex;
++  background: rgba(0, 0, 0, 0.05);
++  padding: 4px;
++  border-radius: var(--radius-full);
++  gap: 4px;
++  border: 1px solid rgba(255, 255, 255, 0.2);
++  backdrop-filter: blur(5px);
++}
++
++.nav__switcher-pill {
++  position: absolute;
++  top: 4px;
++  left: 4px;
++  height: calc(100% - 8px);
++  width: calc(50% - 6px);
++  background: var(--theme-primary);
++  border-radius: var(--radius-full);
++  z-index: 1;
++  box-shadow: var(--shadow-sm);
++  pointer-events: none;
++  transition: background var(--transition-base);
++}
++
++.nav__switcher-btn {
++  position: relative;
++  z-index: 2;
++  padding: var(--space-2) var(--space-5);
++  border: none;
++  background: transparent;
++  font-family: var(--font-body);
++  font-size: var(--font-size-sm);
++  font-weight: var(--font-weight-semibold);
++  color: var(--theme-text);
++  cursor: pointer;
++  border-radius: var(--radius-full);
++  transition: color var(--transition-fast);
++  min-width: 90px;
++}
++
++.nav__switcher-btn[aria-pressed="true"] {
++  color: var(--color-white);
++}
++
++/* Button CTA */
++.btn-cta {
++  display: inline-block;
++  padding: var(--space-2) var(--space-5);
++  background: var(--theme-accent);
++  color: var(--color-white);
++  text-decoration: none;
++  font-weight: var(--font-weight-bold);
++  font-size: var(--font-size-sm);
++  border-radius: var(--radius-full);
++  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-base);
++  box-shadow: var(--shadow-md);
++  border: none;
++}
++
++.btn-cta:hover {
++  transform: translateY(-2px);
++  box-shadow: var(--shadow-lg);
++  color: var(--color-white);
++}
++
++/* Mobile Menu Toggle */
++.header__menu-toggle {
++  display: none;
++  flex-direction: column;
++  justify-content: center;
++  align-items: center;
++  gap: 6px;
++  background: rgba(0, 0, 0, 0.05);
++  border: none;
++  cursor: pointer;
++  width: 44px;
++  height: 44px;
++  border-radius: var(--radius-md);
++  transition: background var(--transition-fast);
++}
++
++.header__menu-toggle span {
++  display: block;
++  width: 24px;
++  height: 2px;
++  background: var(--theme-text);
++  transition: transform var(--transition-base), opacity var(--transition-base);
++}
++
++/* Responsive */
++@media (max-width: 1024px) {
++  .header__container {
++    padding: 0 var(--space-4);
++  }
++}
++
++@media (max-width: 768px) {
++  .header {
++    padding: var(--space-3) 0;
++  }
++
++  .header__actions .btn-cta {
++    display: none;
++  }
++  
++  .header__menu-toggle {
++    display: flex;
++  }
++  
++  .nav {
++    position: absolute;
++    top: 100%;
++    left: 0;
++    width: 100%;
++    background: var(--color-glass-white);
++    backdrop-filter: blur(var(--blur-glass));
++    padding: var(--space-4);
++    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
++    display: none; /* Controlled by JS later, or keep visible for now if no menu logic */
++    justify-content: center;
++  }
++
++  /* For now, let's keep the switcher visible on mobile header if possible, or just below logo */
++  .nav--visible {
++    display: flex;
++  }
++  
++  .nav__switcher {
++    width: 100%;
++    max-width: 280px;
++  }
++
++  .nav__switcher-btn {
++    height: 44px;
++    flex: 1;
++    min-width: 0;
++  }
++}
+diff --git a/tests/Navigation.test.js b/tests/Navigation.test.js
+new file mode 100644
+index 0000000..b06d826
+--- /dev/null
++++ b/tests/Navigation.test.js
+@@ -0,0 +1,58 @@
++import test from 'node:test';
++import assert from 'node:assert';
++
++// Mock DOM
++global.window = {
++  addEventListener: (name, cb) => {
++    global.window.listeners = global.window.listeners || {};
++    global.window.listeners[name] = cb;
++  },
++  CustomEvent: class {
++    constructor(name, opts) {
++      this.name = name;
++      this.detail = opts.detail;
++    }
++  }
++};
++
++global.document = {
++  querySelectorAll: (selector) => [],
++  querySelector: (selector) => null,
++  body: {
++    dataset: {}
++  }
++};
++
++test('Navigation Component RED Phase', async (t) => {
++  let Navigation;
++  try {
++    const module = await import('../src/components/Navigation.js');
++    Navigation = module.default;
++  } catch (e) {
++    // Expected to fail if file doesn't exist
++  }
++
++  await t.test('Navigation should be initialized', () => {
++    assert.ok(Navigation, 'Navigation module should exist');
++  });
++
++  await t.test('init should add event listener for themeChanged', () => {
++    if (Navigation && Navigation.init) Navigation.init();
++    assert.ok(global.window.listeners && global.window.listeners['themeChanged'], 'themeChanged listener should be registered');
++  });
++
++  await t.test('updatePill should set aria-pressed on target button', () => {
++    const btnGirls = { dataset: { themeTarget: 'girls' }, setAttribute: (k, v) => { btnGirls[k] = v; } };
++    const btnBoys = { dataset: { themeTarget: 'boys' }, setAttribute: (k, v) => { btnBoys[k] = v; } };
++    Navigation.buttons = [btnGirls, btnBoys];
++    Navigation.pill = {}; // Mock pill object for GSAP
++
++    Navigation.updatePill('girls');
++    assert.strictEqual(btnGirls['aria-pressed'], 'true');
++    assert.strictEqual(btnBoys['aria-pressed'], 'false');
++
++    Navigation.updatePill('boys');
++    assert.strictEqual(btnGirls['aria-pressed'], 'false');
++    assert.strictEqual(btnBoys['aria-pressed'], 'true');
++  });
++});
+diff --git a/tests/ThemeManager.test.js b/tests/ThemeManager.test.js
+new file mode 100644
+index 0000000..e205615
+--- /dev/null
++++ b/tests/ThemeManager.test.js
+@@ -0,0 +1,63 @@
++import test from 'node:test';
++import assert from 'node:assert';
++
++// Mock DOM before importing the module
++global.window = {
++  location: { search: '', pathname: '/' },
++  history: {
++    pushState: (state, unused, url) => {
++      const parsed = new URL(url, 'http://localhost');
++      global.window.location.search = parsed.search;
++      global.window.location.pathname = parsed.pathname;
++    }
++  },
++  dispatchEvent: (event) => {
++    global.window.lastDispatchedEvent = event;
++  }
++};
++
++global.document = {
++  body: {
++    dataset: {}
++  }
++};
++
++global.CustomEvent = class CustomEvent {
++  constructor(name, opts) {
++    this.name = name;
++    this.detail = opts ? opts.detail : null;
++  }
++};
++
++// Now import the module (which doesn't exist yet, so we expect a failure)
++test('ThemeManager tests', async (t) => {
++  // We will dynamically import to allow the first test to run even if the file doesn't exist
++  let ThemeManager;
++  try {
++    const module = await import('../src/core/ThemeManager.js');
++    ThemeManager = module.default;
++  } catch (e) {
++    // If it fails to import, the tests below will fail which is expected for RED phase
++  }
++
++  await t.test('getThemeFromURL should handle case insensitivity', () => {
++    global.window.location.search = '?type=GIRLS';
++    assert.strictEqual(ThemeManager.getThemeFromURL(), 'girls');
++  });
++
++  await t.test('getThemeFromURL should read from pathname segments', () => {
++    global.window.location.search = '';
++    global.window.location.pathname = '/kiz/hakkimizda';
++    assert.strictEqual(ThemeManager.getThemeFromURL(), 'girls');
++
++    global.window.location.pathname = '/ERKEK';
++    assert.strictEqual(ThemeManager.getThemeFromURL(), 'boys');
++  });
++
++  await t.test('applyTheme should clear theme if null is provided', () => {
++    global.document.body.dataset.theme = 'girls';
++    ThemeManager.applyTheme(null);
++    assert.strictEqual(global.document.body.dataset.theme, undefined);
++    assert.strictEqual(global.window.lastDispatchedEvent.detail.theme, null);
++  });
++});

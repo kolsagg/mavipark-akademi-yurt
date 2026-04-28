@@ -1,0 +1,287 @@
+/**
+ * Navigation Component Styles
+ * Header, Logo, and Theme Switcher
+ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-nav);
+  padding: var(--space-4) 0;
+  transition: background var(--transition-base), padding var(--transition-base), border var(--transition-base);
+  backdrop-filter: blur(var(--blur-glass-light));
+  background: var(--color-glass-white);
+  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
+}
+
+.header--scrolled {
+  padding: var(--space-2) 0;
+  background: var(--color-glass-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.header__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--theme-text);
+  transition: color var(--transition-base);
+}
+
+.logo__text {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1;
+}
+
+.logo__sub {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.2em;
+  color: var(--theme-primary);
+  margin-top: 2px;
+  transition: color var(--transition-base);
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav__link {
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--theme-text);
+  letter-spacing: 0.1em;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--theme-primary);
+  transition: width var(--transition-base);
+}
+
+.nav__link:hover {
+  color: var(--theme-primary);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* Navigation Switcher */
+.nav__switcher {
+  position: relative;
+  display: flex;
+  background: rgba(var(--color-white-rgb), 0.7); /* Beyaz zeminde daha belirgin */
+  padding: 4px;
+  border-radius: var(--radius-full);
+  gap: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.08); /* Belirgin sınır */
+  backdrop-filter: blur(12px);
+  min-height: 44px;
+  align-items: stretch;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.nav__switcher-pill {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(100% - 8px);
+  width: calc(50% - 6px);
+  background: var(--theme-primary);
+  border-radius: var(--radius-full);
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Güçlü aktif gölgesi */
+  pointer-events: none;
+  /* Transition GSAP tarafından yönetiliyor */
+}
+
+.nav__switcher-btn {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--space-5);
+  border: none;
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--theme-text);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast);
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  letter-spacing: 0.1em;
+}
+
+.nav__switcher-btn[aria-pressed="true"] {
+  color: #FFFFFF;
+}
+
+/* Button CTA */
+.btn-cta {
+  display: inline-block;
+  padding: var(--space-2) var(--space-5);
+  background: var(--theme-accent);
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-base);
+  box-shadow: var(--shadow-md);
+  border: none;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-white);
+}
+
+/* Mobile Menu Toggle */
+.header__menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background: rgba(var(--color-white-rgb), 0.1);
+  border: 1px solid rgba(var(--color-white-rgb), 0.2);
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.header__menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--theme-text);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header__container {
+    padding: 0 var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-3) 0;
+  }
+
+  .header__actions .btn-cta {
+    display: none;
+  }
+  
+  .header__menu-toggle {
+    display: flex;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-glass-white);
+    backdrop-filter: blur(var(--blur-glass));
+    padding: var(--space-6) var(--space-4);
+    border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav__links {
+    flex-direction: column;
+    gap: var(--space-4);
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav__link {
+    font-size: var(--font-size-base);
+    padding: var(--space-2) 0;
+    width: 100%;
+  }
+
+  .nav--visible {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
+  }
+  
+  .nav__switcher {
+    width: 100%;
+    max-width: 320px;
+    min-height: 52px; /* Extra height for mobile touch */
+    padding: 6px;
+  }
+
+  .nav__switcher-btn {
+    height: 44px; /* AC 3: 44px minimum touch target */
+    flex: 1;
+    min-width: 0;
+    font-size: var(--font-size-base);
+  }
+
+  .nav__switcher-pill {
+    top: 6px;
+    left: 6px;
+    height: calc(100% - 12px);
+    width: calc(50% - 9px);
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

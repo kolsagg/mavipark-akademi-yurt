@@ -53,28 +53,36 @@
    2. SEMANTIC TOKENS — Tema-Bağımlı Değişkenler
    =================================================== */
 :root {
-  /* Default tema (nötr/landing) */
-  --theme-primary: var(--color-lilac-500);
-  --theme-primary-dark: var(--color-lilac-700);
-  --theme-accent: var(--color-lilac-900);
+  /* Default tema (nötr/landing) — Siyah/Beyaz/Gri tonları */
+  --theme-primary: var(--color-white);
+  --theme-primary-dark: var(--color-gray-light);
+  --theme-accent: var(--color-white);
   --theme-surface: var(--color-glass-white);
-  --theme-bg: var(--color-black);
-  --theme-text: var(--color-anthracite);
-  --theme-text-light: var(--color-gray-dark);
+  --theme-bg: var(--color-white);
+  --theme-text: var(--color-black);
+  --theme-text-light: var(--color-gray-mid);
 }
 
-/* Kız Yurdu Tema Override */
+/* Kız Yurdu Tema Override — Mor/Lila Tonları */
 body[data-theme="girls"] {
   --theme-primary: var(--color-lilac-500);
   --theme-primary-dark: var(--color-lilac-700);
   --theme-accent: var(--color-lilac-900);
+  --theme-bg: #FFFFFF;
+  --theme-bg-accent: #d5c5ff;
+  --theme-text: var(--color-anthracite);
+  --theme-text-light: var(--color-gray-mid);
 }
 
-/* Erkek Yurdu Tema Override */
+/* Erkek Yurdu Tema Override — Mavi Tonları */
 body[data-theme="boys"] {
   --theme-primary: var(--color-steel-500);
   --theme-primary-dark: var(--color-steel-700);
   --theme-accent: var(--color-steel-900);
+  --theme-bg: #FFFFFF;
+  --theme-bg-accent: #c5e0ff;
+  --theme-text: var(--color-anthracite);
+  --theme-text-light: var(--color-gray-mid);
 }
 
 

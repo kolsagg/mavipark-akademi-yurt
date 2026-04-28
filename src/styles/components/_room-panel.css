@@ -1,0 +1,92 @@
+/**
+ * Room Panel Component Styles
+ */
+
+.room-panel {
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Redundant header styles removed, now using .section-header from base.css */
+
+.room-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .room-panel__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .room-panel__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* Room Card Enhancements */
+.room-panel .glass-card {
+  height: 100%;
+  transition: box-shadow var(--transition-base);
+  will-change: transform, opacity;
+}
+
+.room-panel .glass-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.room-panel .glass-card__footer {
+  margin-top: auto;
+  padding: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(var(--color-white-rgb), 0.05);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.room-type-badge {
+  background: var(--theme-primary);
+  color: white;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.room-type-badge--outline {
+  background: transparent;
+  color: var(--theme-primary);
+  border: 1px solid var(--theme-primary);
+}
+
+.room-panel__btn {
+  padding: 8px 16px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: var(--theme-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+  transition: filter var(--transition-base);
+}
+
+.room-panel__btn:hover {
+  filter: brightness(1.1);
+}
+
+.glass-card__list-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  opacity: 0.9;
+}

@@ -1,0 +1,38 @@
+<div class="glass-card {{class}}" data-glass-card>
+  {{#if image}}
+  <div class="glass-card__image-wrapper">
+    <img src="{{image}}" alt="{{#if image_alt}}{{image_alt}}{{else}}{{title}}{{/if}}" class="glass-card__image" loading="lazy">
+  </div>
+  {{/if}}
+  
+  <div class="glass-card__body">
+    {{#if badge}}
+    {{#if badge.length}}
+    <span class="glass-card__badge">{{badge}}</span>
+    {{/if}}
+    {{/if}}
+    
+    <h3 class="glass-card__title">{{title}}</h3>
+    
+    {{#if description}}
+    <p class="glass-card__description">{{description}}</p>
+    {{/if}}
+    
+    {{#if items}}
+    <ul class="glass-card__list">
+      {{#each items}}
+      <li class="glass-card__list-item">
+        <span class="glass-card__list-icon">{{#if icon}}{{{icon}}}{{else}}•{{/if}}</span>
+        <span class="glass-card__list-text">{{this.text}}</span>
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </div>
+
+  {{#if footer}}
+  <div class="glass-card__footer">
+    {{{footer}}}
+  </div>
+  {{/if}}
+</div>

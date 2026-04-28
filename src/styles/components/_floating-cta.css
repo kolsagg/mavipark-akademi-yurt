@@ -1,0 +1,103 @@
+.floating-cta {
+  position: fixed;
+  z-index: var(--z-floating-cta);
+  bottom: var(--space-6);
+  right: var(--space-6);
+  pointer-events: none; /* Container itself shouldn't block clicks */
+  visibility: hidden; /* Will be shown via GSAP */
+}
+
+/* Fallback for no-JS or if GSAP fails to trigger */
+.no-js .floating-cta {
+  visibility: visible;
+}
+
+.floating-cta__button {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: var(--theme-surface);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid rgba(var(--color-white-rgb), 0.2);
+  border-radius: var(--radius-full);
+  color: var(--theme-text);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: background var(--transition-base);
+  outline: none;
+}
+
+.floating-cta__button:hover {
+  background: var(--theme-primary);
+  color: var(--color-white);
+}
+
+.floating-cta__button:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.floating-cta__button:focus-visible {
+  box-shadow: 0 0 0 4px var(--theme-primary-dark);
+}
+
+.floating-cta__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.floating-cta__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Toast Notification Styles */
+.toast-container {
+  position: fixed;
+  top: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-preloader); /* Topmost */
+  pointer-events: none;
+}
+
+.toast {
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-anthracite);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Overrides */
+@media (max-width: 767px) {
+  .floating-cta {
+    bottom: var(--space-4);
+    right: 50%;
+    transform: translateX(50%);
+    width: auto;
+  }
+
+  .floating-cta__text {
+    font-size: var(--font-size-sm);
+  }
+}

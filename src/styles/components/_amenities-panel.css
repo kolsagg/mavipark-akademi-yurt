@@ -1,0 +1,58 @@
+.amenities-panel {
+  padding: var(--spacing-xxl) 0;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Redundant header styles removed, now using .section-header from base.css */
+
+.amenities-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .amenities-panel__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .amenities-panel__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+.amenities-panel__loader {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-10);
+  color: var(--theme-text-light);
+}
+
+/* Specific overrides for glass cards in amenities panel */
+.amenities-panel .glass-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.amenities-panel .glass-card:hover {
+  transform: translateY(-10px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.amenities-panel .glass-card__image-wrapper {
+  height: 200px;
+}
+
+@media (max-width: 768px) {
+  .amenities-panel__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}

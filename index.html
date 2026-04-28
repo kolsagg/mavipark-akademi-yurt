@@ -6,20 +6,39 @@
     <!-- Google Fonts: Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&family=Inter:wght@400;500&display=swap" as="style" />
+    
+    <!-- Preload Split Hero Images (Critical for LCP) -->
+    <link rel="preload" href="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2000&auto=format&fit=crop&fm=webp" as="image" fetchpriority="high" />
+    <link rel="preload" href="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2000&auto=format&fit=crop&fm=webp" as="image" fetchpriority="high" />
 
     <!-- Google Fonts: Epilogue (600,700) + Inter (400,500) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&family=Inter:wght@400;500&display=swap"
       rel="stylesheet"
+      media="print" 
+      onload="this.media='all'"
     />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    </noscript>
 
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   </head>
   <body>
     {{> _preloader }}
-    <div id="app">
+    {{> _page-bg }}
+    <main id="app">
+      <h1 class="sr-only">{{siteName}} - Premium Öğrenci Yurdu Seçimi</h1>
       {{> _split-hero }}
-    </div>
+    </main>
+    {{> _floating-cta }}
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

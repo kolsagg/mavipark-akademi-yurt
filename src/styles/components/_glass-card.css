@@ -1,0 +1,140 @@
+/**
+ * Glass Card Component Styles
+ * BEM Methodology & Glassmorphism Design
+ */
+
+.glass-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(var(--color-white-rgb), 0.85); /* Increased opacity for better contrast */
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid rgba(var(--color-white-rgb), 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-glass);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  height: 100%;
+  will-change: transform, box-shadow;
+  z-index: var(--z-base); /* Ensure correct stacking */
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card {
+    background: rgba(var(--color-white-rgb), 0.95);
+  }
+}
+
+/* Theme adaptation for border */
+body[data-theme="girls"] .glass-card {
+  border-color: rgba(var(--color-lilac-200), 0.3);
+}
+
+body[data-theme="boys"] .glass-card {
+  border-color: rgba(var(--color-steel-200), 0.3);
+}
+
+.glass-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.glass-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.glass-card:hover .glass-card__image {
+  transform: scale(1.05);
+}
+
+.glass-card__body {
+  padding: var(--space-5);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.glass-card__badge {
+  align-self: flex-start;
+  padding: var(--space-1) var(--space-3);
+  background: var(--theme-primary);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.glass-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--theme-text);
+  line-height: var(--line-height-tight);
+}
+
+.glass-card__description {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--theme-text-light);
+  line-height: var(--line-height-normal);
+  opacity: 0.9;
+}
+
+.glass-card__list {
+  margin: var(--space-2) 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.glass-card__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--theme-text);
+}
+
+.glass-card__list-icon {
+  color: var(--theme-primary);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.glass-card__footer {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid rgba(var(--color-white-rgb), 0.1);
+  background: rgba(var(--color-white-rgb), 0.05);
+}
+
+/* Accessibility: Focus state */
+.glass-card:focus-within {
+  outline: 2px solid var(--theme-primary);
+  outline-offset: 4px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 767px) {
+  .glass-card__body {
+    padding: var(--space-4);
+  }
+  
+  .glass-card__title {
+    font-size: var(--font-size-lg);
+  }
+}

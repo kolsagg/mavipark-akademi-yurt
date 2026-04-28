@@ -127,6 +127,37 @@ class AnimationEngine {
   }
 
   /**
+   * Animates the intro of regular page content (Rooms, Amenities)
+   */
+  introPageContent() {
+    return new Promise((resolve) => {
+      const contentElements = document.querySelectorAll('.room-panel, .amenities-panel');
+      if (contentElements.length === 0) {
+        resolve();
+        return;
+      }
+
+      this.ctx.add(() => {
+        const tl = gsap.timeline({ onComplete: () => resolve() });
+        
+        if (this.isReducedMotion) {
+          return tl.set(contentElements, { opacity: 1, y: 0 });
+        }
+
+        gsap.set(contentElements, { opacity: 0, y: 50 });
+
+        tl.to(contentElements, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power3.out'
+        });
+      });
+    });
+  }
+
+  /**
    * Cleans up GSAP context
    */
   destroy() {

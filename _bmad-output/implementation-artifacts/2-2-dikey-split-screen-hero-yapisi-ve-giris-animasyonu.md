@@ -2,7 +2,7 @@
 
 **Epic:** 2 - Split-Screen Giriş ve Dinamik Temalandırma
 **Story Key:** 2-2-dikey-split-screen-hero-yapisi-ve-giris-animasyonu
-**Status:** in-progress
+**Status:** done
 
 ## 📖 Story Requirements (Hikaye Gereksinimleri)
 
@@ -151,7 +151,7 @@ akademi_yurt/
 
 ---
 
-**Status:** review
+**Status:** done
 
 ## 📂 File List
 - `index.html` (modified)

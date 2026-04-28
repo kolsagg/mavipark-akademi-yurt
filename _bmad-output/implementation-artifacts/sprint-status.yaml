@@ -1,5 +1,5 @@
 # generated: 2026-04-24T02:45:05+03:00
-# last_updated: 2026-04-24T03:41:00+03:00
+# last_updated: 2026-04-28T16:13:00+03:00
 # project: akademi_yurt
 # project_key: NOKEY
 # tracking_system: file-system
@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-24T02:45:05+03:00
-last_updated: 2026-04-24T12:13:00+03:00
+last_updated: 2026-04-26T04:57:00+03:00
 project: akademi_yurt
 project_key: NOKEY
 tracking_system: file-system
@@ -46,24 +46,24 @@ development_status:
   1-1-vite-projesinin-baslatilmasi-ve-moduler-klasor-yapisi: done
   1-2-tasarim-sistemi-tokens-ve-handlebars-kurulumu: done
   epic-1-retrospective: done
-  epic-2: in-progress
+  epic-2: done
   2-1-marka-logolu-preloader-animasyonu: done
-  2-2-dikey-split-screen-hero-yapisi-ve-giris-animasyonu: review
-  2-3-thememanager-js-ve-url-first-tema-mantigi: backlog
-  2-4-dinamik-navigasyon-ve-bolum-degistirici: backlog
+  2-2-dikey-split-screen-hero-yapisi-ve-giris-animasyonu: done
+  2-3-thememanager-js-ve-url-first-tema-mantigi: done
+  2-4-dinamik-navigasyon-ve-bolum-degistirici: done
   epic-2-retrospective: optional
-  epic-3: backlog
-  3-1-glassmorphism-kart-bileseni-tasarimi: backlog
-  3-2-dinamik-oda-tipleri-ve-ozellikleri-paneli: backlog
-  3-3-genel-imkanlar-ve-ortak-alanlar-tanitimi: backlog
-  3-4-scrolltrigger-ile-akici-icerik-animasyonlari: backlog
+  epic-3: done
+  3-1-glassmorphism-kart-bileseni-tasarimi: done
+  3-2-dinamik-oda-tipleri-ve-ozellikleri-paneli: done
+  3-3-genel-imkanlar-ve-ortak-alanlar-tanitimi: done
+  3-4-scrolltrigger-ile-akici-icerik-animasyonlari: done
   epic-3-retrospective: optional
-  epic-4: backlog
-  4-1-sabit-floating-cta-bileseni: backlog
-  4-2-iletisim-bilgileri-ve-harita-entegrasyonu: backlog
+  epic-4: done
+  4-1-sabit-floating-cta-bileseni: done
+  4-2-iletisim-bilgileri-ve-harita-entegrasyonu: done
   epic-4-retrospective: optional
-  epic-5: backlog
-  5-1-seo-metadatalari-ve-semantik-html-optimizasyonu: backlog
-  5-2-gorsel-optimizasyon-ve-lighthouse-performans-cilalamasi: backlog
+  epic-5: in-progress
+  5-1-seo-metadatalari-ve-semantik-html-optimizasyonu: done
+  5-2-gorsel-optimizasyon-ve-lighthouse-performans-cilalamasi: done
   5-3-erisilebilirlik-a11y-ve-kontrast-denetimi: backlog
   epic-5-retrospective: optional

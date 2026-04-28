@@ -1,0 +1,198 @@
+/**
+ * Contact Panel Component Styles
+ * BEM Methodology & Premium Aesthetic
+ */
+
+.contact-panel {
+  padding: var(--space-16) 0;
+  position: relative;
+  z-index: var(--z-base);
+  --accent-color: var(--theme-primary);
+}
+
+[data-theme="girls"] .contact-panel {
+  --accent-color: var(--color-girls-primary);
+}
+
+[data-theme="boys"] .contact-panel {
+  --accent-color: var(--color-boys-primary);
+}
+
+.contact-panel__header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-panel__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--theme-text);
+  margin-bottom: var(--space-3);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.contact-panel__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  color: var(--theme-text-light);
+  line-height: var(--line-height-relaxed);
+}
+
+.contact-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.contact-panel__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.contact-panel__card {
+  height: auto;
+}
+
+.contact-panel__link {
+  color: var(--theme-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+}
+
+.contact-panel__link:hover {
+  color: var(--theme-primary);
+}
+
+.contact-panel__security-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.contact-panel__security-card {
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.contact-panel__security-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--theme-primary);
+}
+
+.contact-panel__security-icon {
+  color: var(--theme-primary);
+  margin-bottom: var(--space-3);
+  display: inline-block;
+}
+
+.contact-panel__security-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--theme-text);
+  margin-bottom: var(--space-2);
+}
+
+.contact-panel__security-desc {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--theme-text-light);
+  line-height: var(--line-height-normal);
+}
+
+.contact-panel__map-container {
+  height: 100%;
+  min-height: 500px;
+}
+
+.contact-panel__map-card {
+  padding: 0;
+  border-radius: var(--radius-xl);
+}
+
+.contact-panel__map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.contact-panel__map {
+  filter: grayscale(1);
+  transition: filter var(--transition-slow);
+}
+
+.contact-panel__map-card:hover .contact-panel__map {
+  filter: grayscale(0);
+}
+
+.contact-panel__map-overlay {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.contact-panel__map-card:hover .contact-panel__map-overlay,
+.contact-panel__map-card:focus-within .contact-panel__map-overlay {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.contact-panel__map-btn {
+  pointer-events: auto;
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  background: var(--accent-color);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.contact-panel__map-btn:focus {
+  outline: 3px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.contact-panel__map-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Responsive Optimizations */
+@media (max-width: 1023px) {
+  .contact-panel__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-panel__map-container {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-panel {
+    padding: var(--space-10) 0;
+  }
+  
+  .contact-panel__title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .contact-panel__security-cards {
+    grid-template-columns: 1fr;
+  }
+}

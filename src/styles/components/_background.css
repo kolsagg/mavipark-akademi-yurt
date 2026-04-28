@@ -1,0 +1,40 @@
+/**
+ * Page Background Styles
+ * Implements the Grid + Mesh Gradient effect requested by the user.
+ */
+
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-white);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+    linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.page-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle 600px at 0% 200px, var(--theme-bg-accent, transparent), transparent),
+    radial-gradient(circle 600px at 100% 200px, var(--theme-bg-accent, transparent), transparent);
+  background-size: 100% 100%;
+  opacity: 0.6; /* Adjust for subtleness */
+  transition: background-image var(--transition-slow);
+}
+
+/* Fallback for index.html (neutral) */
+body:not([data-theme]) .page-bg::after {
+  --theme-bg-accent: #f0f0f0;
+}

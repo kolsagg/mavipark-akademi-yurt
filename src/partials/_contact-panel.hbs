@@ -1,0 +1,83 @@
+<section class="contact-panel" id="iletisim" data-theme-section>
+  <div class="container">
+    <div class="contact-panel__header" data-reveal>
+      <h2 class="contact-panel__title">İletişim & Konum</h2>
+      <p class="contact-panel__subtitle">Bize dilediğiniz zaman ulaşabilir, yurdumuzu ziyaret edebilirsiniz.</p>
+    </div>
+
+    <div class="contact-panel__grid">
+      <!-- İletişim Bilgileri -->
+      <div class="contact-panel__info" data-reveal-container>
+        <div class="glass-card contact-panel__card" data-reveal-batch>
+          <div class="glass-card__body">
+            <h3 class="glass-card__title">İletişim Bilgileri</h3>
+            <ul class="glass-card__list">
+              <li class="glass-card__list-item">
+                <span class="glass-card__list-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </span>
+                <span class="contact-panel__text">Yenişehir Mh. Akademi Cd. No:1, 58000 Sivas Merkez/Sivas</span>
+              </li>
+              <li class="glass-card__list-item">
+                <span class="glass-card__list-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </span>
+                <a href="tel:{{phoneNumber}}" class="contact-panel__link" aria-label="Bizi arayın: {{phoneNumber}}">{{phoneNumber}}</a>
+              </li>
+              <li class="glass-card__list-item">
+                <span class="glass-card__list-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </span>
+                <a href="mailto:bilgi@akademisuit.com" class="contact-panel__link" aria-label="E-posta gönder: bilgi@akademisuit.com">bilgi@akademisuit.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-panel__security-cards">
+          <div class="glass-card contact-panel__security-card" data-reveal-batch>
+            <div class="glass-card__body">
+              <span class="contact-panel__security-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </span>
+              <h4 class="contact-panel__security-title">7/24 Güvenlik</h4>
+              <p class="contact-panel__security-desc">Kesintisiz kamera kaydı ve profesyonel güvenlik ekibi.</p>
+            </div>
+          </div>
+          <div class="glass-card contact-panel__security-card" data-reveal-batch>
+            <div class="glass-card__body">
+              <span class="contact-panel__security-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"></path></svg>
+              </span>
+              <h4 class="contact-panel__security-title">Merkezi Konum</h4>
+              <p class="contact-panel__security-desc">Üniversite ve şehir merkezine kolay ulaşım imkanı.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Harita -->
+      <div class="contact-panel__map-container" data-reveal-batch>
+        <div class="glass-card contact-panel__map-card">
+          <div class="contact-panel__map-wrapper" style="background: var(--theme-surface-light);">
+            <!-- Google Maps Iframe -->
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.3683648483!2d37.0150!3d39.7497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408031e8b958c2f1%3A0x6b777498c4897f1f!2zU2l2YXMsIFTDvHJraXll!5e0!3m2!1str!2str!4v1650000000000!5m2!1str!2str" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              title="Akademi Suit Konumu"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="contact-panel__map"
+            ></iframe>
+            <div class="contact-panel__map-overlay">
+              <a href="https://maps.google.com/maps?q=39.7497,37.0150" target="_blank" class="contact-panel__map-btn" aria-label="Konumu Google Haritalar'da yeni sekmede aç">Haritada Gör</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
