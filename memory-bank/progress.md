@@ -25,6 +25,7 @@
 - [x] İletişim Bilgileri ve Harita Entegrasyonu (Story 4.2)
 - [x] SEO Metadataları ve Semantik HTML Optimizasyonu (Story 5.1)
 - [x] Görsel Optimizasyon ve Lighthouse Performans Cilalaması (Story 5.2)
+- [x] Erişilebilirlik (A11y) ve Kontrast Denetimi (Story 5.3)
 
 ## Bilinen Sorunlar
 - Herhangi bir kritik hata bulunmuyor. GSAP animasyonları ve responsive yapı optimize edildi.

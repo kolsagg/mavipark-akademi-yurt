@@ -1,5 +1,9 @@
 # Deferred Work Log
 
+## Deferred from: code review of 5-3-erisilebilirlik-a11y-ve-kontrast-denetimi (2026-04-28)
+
+- **Footer A11y Denetimi**: `_footer.hbs` dosyası henüz oluşturulmadığı için erişilebilirlik denetimi yapılamadı. Story 5.3 tamamlandıktan sonra ele alınacak. (Reason: Bu story bittikten sonra geliştirilecek)
+
 ## Deferred from: code review of 3-1-glassmorphism-kart-bileseni-tasarimi (2026-04-25)
 - **Main JS Senkron Import Yükü**: Tüm bileşen modülleri main.js içinde senkron olarak import ediliyor. Proje büyüdükçe dynamic import (lazy loading) stratejisine geçilmesi gerekebilir.
 

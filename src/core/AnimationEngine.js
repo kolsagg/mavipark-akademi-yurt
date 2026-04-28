@@ -7,15 +7,14 @@ import { gsap } from 'gsap';
 
 class AnimationEngine {
   constructor() {
-    this.ctx = null;
-    this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.mm = gsap.matchMedia();
   }
 
   /**
    * Initializes the preloader entrance/loading animation
    */
   initPreloader() {
-    this.ctx = gsap.context(() => {
+    this.mm.add("(prefers-reduced-motion: no-preference)", () => {
       // Loading bar animation
       gsap.to('.preloader__bar', {
         x: '0%',
@@ -34,6 +33,11 @@ class AnimationEngine {
         yoyo: true
       });
     });
+
+    this.mm.add("(prefers-reduced-motion: reduce)", () => {
+      // Simplified or no animation for reduced motion
+      gsap.set('.preloader__bar', { x: '0%', opacity: 0.5 });
+    });
   }
 
   /**
@@ -42,21 +46,18 @@ class AnimationEngine {
    */
   exitPreloader() {
     return new Promise((resolve) => {
-      if (!this.ctx) {
-        resolve();
-        return;
-      }
-
-      this.ctx.add(() => {
+      this.mm.add({
+        isReduced: "(prefers-reduced-motion: reduce)"
+      }, (context) => {
+        const { isReduced } = context.conditions;
         const tl = gsap.timeline({
           onComplete: () => {
             document.getElementById('preloader')?.remove();
-            this.ctx.revert(); // Cleanup
             resolve();
           }
         });
 
-        if (this.isReducedMotion) {
+        if (isReduced) {
           tl.to('.preloader', { opacity: 0, duration: 0.5 });
         } else {
           tl.to('.preloader__bar', { scaleX: 1.5, opacity: 0, duration: 0.4, ease: 'power2.in' })
@@ -77,27 +78,41 @@ class AnimationEngine {
       });
     });
   }
+
   /**
    * Animates the intro of the split hero panels
    */
   introSplitHero() {
     return new Promise((resolve) => {
-      // If elements don't exist, resolve immediately
       if (!document.querySelector('.split-hero')) {
         resolve();
         return;
       }
 
-      this.ctx.add(() => {
-        const tl = gsap.timeline({ onComplete: () => resolve() });
+      this.mm.add({
+        isReduced: "(prefers-reduced-motion: reduce)",
+        isMobile: "(max-width: 767px)",
+        isDesktop: "(min-width: 768px)"
+      }, (context) => {
+        let { isReduced, isMobile } = context.conditions;
+        let isResolved = false;
         
-        if (this.isReducedMotion) {
+        const tl = gsap.timeline({ 
+          onComplete: () => {
+            if (!isResolved) {
+              isResolved = true;
+              resolve();
+            }
+          } 
+        });
+
+        if (isReduced) {
           gsap.set('.split-hero__content', { opacity: 1, y: 0 });
-          return tl.to('.split-hero', { opacity: 1, duration: 0.5 });
+          tl.to('.split-hero', { opacity: 1, duration: 0.5 });
+          return;
         }
 
         // Set initial states for animation
-        const isMobile = window.innerWidth < 768;
         if (isMobile) {
           gsap.set('.split-hero__panel--girls', { yPercent: -100 });
           gsap.set('.split-hero__panel--boys', { yPercent: 100 });
@@ -137,21 +152,31 @@ class AnimationEngine {
         return;
       }
 
-      this.ctx.add(() => {
-        const tl = gsap.timeline({ onComplete: () => resolve() });
-        
-        if (this.isReducedMotion) {
-          return tl.set(contentElements, { opacity: 1, y: 0 });
-        }
+      let isResolved = false;
 
+      this.mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(contentElements, { opacity: 1, y: 0 });
+        if (!isResolved) {
+          isResolved = true;
+          resolve();
+        }
+      });
+
+      this.mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.set(contentElements, { opacity: 0, y: 50 });
 
-        tl.to(contentElements, {
+        gsap.to(contentElements, {
           opacity: 1,
           y: 0,
           duration: 1,
           stagger: 0.2,
-          ease: 'power3.out'
+          ease: 'power3.out',
+          onComplete: () => {
+            if (!isResolved) {
+              isResolved = true;
+              resolve();
+            }
+          }
         });
       });
     });
@@ -161,8 +186,8 @@ class AnimationEngine {
    * Cleans up GSAP context
    */
   destroy() {
-    if (this.ctx) {
-      this.ctx.revert();
+    if (this.mm) {
+      this.mm.revert();
     }
   }
 }

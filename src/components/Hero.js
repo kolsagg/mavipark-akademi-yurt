@@ -62,11 +62,23 @@ class Hero {
    * @param {boolean} animate - whether to animate the transition
    */
   updateContent(theme, animate = true) {
+    this.currentTheme = theme;
     const content = this.data[theme];
     if (!content) return;
 
     if (!animate) {
       this.applyContent(content);
+      return;
+    }
+
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isReducedMotion) {
+      this.applyContent(content);
+      gsap.set(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
+        opacity: 1,
+        y: 0
+      });
       return;
     }
 
@@ -78,15 +90,18 @@ class Hero {
       stagger: 0.05,
       ease: 'power2.in',
       onComplete: () => {
-        this.applyContent(content);
-        // In animation
-        gsap.to(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out'
-        });
+        // Only apply if this is still the active theme request
+        if (this.currentTheme === theme) {
+          this.applyContent(content);
+          // In animation
+          gsap.to(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out'
+          });
+        }
       }
     });
   }
@@ -100,7 +115,8 @@ class Hero {
     if (this.elements.highlightDesc) this.elements.highlightDesc.textContent = content.highlightDesc;
     if (this.elements.img) {
       this.elements.img.src = content.image;
-      this.elements.img.alt = `Akademi Suit - ${content.badge} Konaklama Alanı`;
+      const typeLabel = content.badge.includes('Girls') ? 'Kız' : 'Erkek';
+      this.elements.img.alt = `Akademi Suit - ${typeLabel} Yurdu Konaklama Alanı`;
     }
   }
 }

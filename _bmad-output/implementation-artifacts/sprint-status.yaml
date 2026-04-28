@@ -1,5 +1,5 @@
 # generated: 2026-04-24T02:45:05+03:00
-# last_updated: 2026-04-28T16:13:00+03:00
+# last_updated: 2026-04-28T16:18:00+03:00
 # project: akademi_yurt
 # project_key: NOKEY
 # tracking_system: file-system
@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-24T02:45:05+03:00
-last_updated: 2026-04-26T04:57:00+03:00
+last_updated: 2026-04-28T16:32:00+03:00
 project: akademi_yurt
 project_key: NOKEY
 tracking_system: file-system
@@ -65,5 +65,5 @@ development_status:
   epic-5: in-progress
   5-1-seo-metadatalari-ve-semantik-html-optimizasyonu: done
   5-2-gorsel-optimizasyon-ve-lighthouse-performans-cilalamasi: done
-  5-3-erisilebilirlik-a11y-ve-kontrast-denetimi: backlog
+  5-3-erisilebilirlik-a11y-ve-kontrast-denetimi: done
   epic-5-retrospective: optional

@@ -24,7 +24,7 @@
 
 ## Mevcut Odak
 - [x] Story 5.2: Görsel Optimizasyon ve Lighthouse Performans Cilalaması tamamlandı.
-- [ ] Story 5.3: Erişilebilirlik (A11y) ve Kontrast Denetimi planlanıyor.
+- [x] Story 5.3: Erişilebilirlik (A11y) ve Kontrast Denetimi tamamlandı ve adversarial review ile optimize edildi.
 
 ## Aktif Kararlar
 - Proje ismi olarak "Akademi Suit" veya "Akademi Yurt" kullanılacak (genel dosya adı: akademi_yurt).

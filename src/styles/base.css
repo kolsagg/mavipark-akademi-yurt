@@ -83,6 +83,20 @@ ul, ol {
   list-style: none;
 }
 
+/* ===================================================
+   FOCUS STATES
+   =================================================== */
+:focus-visible {
+  outline: 3px solid var(--theme-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
 
 /* ===================================================
    UTILITY CLASSES
