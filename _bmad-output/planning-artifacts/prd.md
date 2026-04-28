@@ -126,7 +126,7 @@ Sistemi benzersiz kılan temel özellik, "Split-Screen" (Bölünmüş Ekran) gir
 
 ### 1. Tema ve Gezinme (Theming & Navigation)
 - **FR1:** Kullanıcılar, siteye ilk girişte "Kız Yurdu" veya "Erkek Yurdu" olmak üzere iki farklı başlangıç noktasından (Split-Screen) birini seçebilir.
-- **FR2:** Kullanıcılar, oturumları sırasında istedikleri an ana menü üzerinden "Kız" veya "Erkek" bölümleri arasında geçiş yapabilir.
+- **FR2:** Kullanıcılar, oturumları sırasında istedikleri an ana menü merkezinde bulunan switch üzerinden "Kız" veya "Erkek" bölümleri arasında geçiş yapabilir. Menü hiyerarşisi: [Ana Sayfa, Odalar] < Switch > [İmkanlar, İletişim].
 - **FR3:** Sistem, seçilen yurt türüne (Kız/Erkek) göre tüm arayüz temasını, görselleri ve içerik bağlamını otomatik olarak güncelleyebilir.
 
 ### 2. İçerik Görüntüleme (Content Discovery)
@@ -136,6 +136,7 @@ Sistemi benzersiz kılan temel özellik, "Split-Screen" (Bölünmüş Ekran) gir
 
 ### 3. Doğrudan İletişim (Direct Communication)
 - **FR7:** Kullanıcılar, sitenin tüm sayfalarında (ve mobil/masaüstü cihazlarda) her an erişilebilir olan bir eylem butonu ("Hemen Başvur" / "Ara") üzerinden doğrudan yurt yönetimini telefonla arayabilir (`tel:` etkileşimi).
+- **FR8:** Görsel varlıklar (resim/ikon) için otomatik hata yakalama ve fallback (yedek) mekanizması bulunmalıdır.
 
 ## Non-Functional Requirements
 

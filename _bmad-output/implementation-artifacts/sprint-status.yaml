@@ -67,3 +67,10 @@ development_status:
   5-2-gorsel-optimizasyon-ve-lighthouse-performans-cilalamasi: done
   5-3-erisilebilirlik-a11y-ve-kontrast-denetimi: done
   epic-5-retrospective: optional
+  epic-6: backlog
+  6-1-navigasyon-ve-header-yeniden-duzenleme: backlog
+  6-2-split-hero-animasyon-optimizasyonu: backlog
+  6-3-varlik-onarimi-ve-hata-giderme: backlog
+  6-4-kart-ve-ui-sadelestirme: backlog
+  6-5-teknik-borc-temizligi-ve-a11y-final: backlog
+  epic-6-retrospective: optional

@@ -262,3 +262,51 @@ So that erişilebilirlik standartlarına uyulur.
 **When** Kontrast oranları 4.5:1 üzerinde olduğunda
 **Then** Lighthouse Accessibility skoru minimum 90/100 olmalı
 
+## Epic 6: Final Polish ve Teknik İyileştirme
+Sitenin navigasyon yapısı, kullanıcı etkileşimleri ve teknik altyapısı mükemmelleştirilir; biriken teknik borçlar temizlenir.
+
+### Story 6.1: Navigasyon ve Header Yeniden Düzenleme
+As a Kullanıcı,
+I want navigasyon menüsünün ve Kız/Erkek anahtarının dengeli bir şekilde yerleştiğini görmek,
+So that menüde daha rahat gezinebilirim.
+
+**Acceptance Criteria:**
+- Kız/Erkek switchi header merkezinde olmalı.
+- Solunda: Ana Sayfa, Odalar.
+- Sağında: İmkanlar, İletişim.
+- Mobil uyum (hamburger menü vb.) bozulmadan korunmalı.
+
+### Story 6.2: Split-Hero Animasyon Optimizasyonu
+As a Ziyaretçi,
+I want Split-Hero üzerindeki hover etkileşimlerinin daha yumuşak olmasını görmek,
+So that görsel geçişler premium hissettirir.
+
+**Acceptance Criteria:**
+- Hover durumunda bir panel büyürken diğeri eş zamanlı ve yumuşak şekilde küçülmeli (GSAP).
+- Ani büyüme/sıçrama efektleri giderilmeli.
+
+### Story 6.3: Varlık Onarımı ve Hata Giderme
+As a Ziyaretçi,
+I want tüm görsel ve ikonların doğru şekilde yüklendiğini görmek.
+
+**Acceptance Criteria:**
+- Bozuk görsel linkleri onarılmalı (Unsplash fallback mekanizması eklenmeli).
+- Metin olarak görünen ikonlar doğru SVG/Icon font halleriyle değiştirilmeli.
+
+### Story 6.4: Kart ve UI Sadeleştirme
+As a Ziyaretçi,
+I want oda kartlarının daha sade olmasını görmek.
+
+**Acceptance Criteria:**
+- Oda kartlarındaki "Keşfet" (Discover) butonu kaldırılmalı.
+- Kartın tamamı veya başlığı tıklanabilir kalmalı.
+
+### Story 6.5: Teknik Borç Temizliği ve A11y Final
+As a Geliştirici,
+I want projenin teknik altyapısını ve erişilebilirliğini finalize etmek.
+
+**Acceptance Criteria:**
+- `main.js` içinde dynamic import (lazy loading) stratejisine geçilmeli.
+- `yurt.html` ve `index.html` arasındaki kod tekrarı azaltılmalı (Unified layout partial).
+- Footer A11y denetimi tamamlanmalı.
+- ScrollEngine magic number temizliği ve destroy çağrıları kontrol edilmeli.

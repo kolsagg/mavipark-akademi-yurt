@@ -124,8 +124,8 @@ Fast HMR, optimized production builds, and simple dependency management.
 - **Internal Messaging:** Custom Event bus or direct module imports for interaction between UI components.
 
 ### Frontend Architecture
-- **Component Architecture:** Functional modules that initialize their own GSAP contexts and DOM event listeners.
-- **Templating:** Handlebars via `vite-plugin-handlebars` for MPA structure.
+- **Component Architecture:** Functional modules that initialize their own GSAP contexts and DOM event listeners. **Dynamic imports** are used in `main.js` for lazy loading.
+- **Templating:** Handlebars via `vite-plugin-handlebars` for MPA structure. A unified `layout.hbs` approach is used to prevent code duplication between entry points.
 - **Styling:** Custom CSS Custom Properties (Variables) within a central `design-tokens.css` file.
 - **Animation:** GSAP 3.x with ScrollTrigger.
 
