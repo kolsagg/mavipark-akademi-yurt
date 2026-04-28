@@ -46,36 +46,47 @@ class AnimationEngine {
    */
   exitPreloader() {
     return new Promise((resolve) => {
-      this.mm.add({
-        isReduced: "(prefers-reduced-motion: reduce)"
-      }, (context) => {
-        const { isReduced } = context.conditions;
-        const tl = gsap.timeline({
-          onComplete: () => {
-            document.getElementById('preloader')?.remove();
-            resolve();
-          }
-        });
+      const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const preloader = document.getElementById('preloader');
 
-        if (isReduced) {
-          tl.to('.preloader', { opacity: 0, duration: 0.5 });
-        } else {
-          tl.to('.preloader__bar', { scaleX: 1.5, opacity: 0, duration: 0.4, ease: 'power2.in' })
-            .to('.preloader__content', { 
-              y: -50, 
-              opacity: 0, 
-              scale: 0.9, 
-              duration: 0.6, 
-              ease: 'power4.in' 
-            }, '-=0.2')
-            .to('.preloader', { 
-              opacity: 0, 
-              scale: 0.95, 
-              duration: 0.8, 
-              ease: 'power4.inOut' 
-            }, '-=0.3');
+      if (!preloader) {
+        resolve();
+        return;
+      }
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          preloader.remove();
+          resolve();
         }
       });
+
+      if (isReduced) {
+        tl.to(preloader, { opacity: 0, duration: 0.4, ease: 'power2.out' });
+      } else {
+        tl.to('.preloader__bar', { scaleX: 1.5, opacity: 0, duration: 0.4, ease: 'power2.in' })
+          .to('.preloader__content', { 
+            y: -50, 
+            opacity: 0, 
+            scale: 0.9, 
+            duration: 0.5, 
+            ease: 'power4.in' 
+          }, '-=0.2')
+          .to(preloader, { 
+            opacity: 0, 
+            duration: 0.6, 
+            ease: 'power3.inOut' 
+          }, '-=0.3');
+      }
+
+      // Safety timeout: ensure site becomes interactive even if GSAP stalls
+      setTimeout(() => {
+        if (document.getElementById('preloader')) {
+          console.warn('[AkademiSuit] Preloader exit stalled, forcing removal.');
+          preloader.remove();
+          resolve();
+        }
+      }, 2000);
     });
   }
 
