@@ -24,3 +24,7 @@
 
 ## Deferred from: code review of 5-2-gorsel-optimizasyon-ve-lighthouse-performans-cilalamasi.md (2026-04-28)
 - Magic Number for Refresh (ScrollEngine.js): 150ms debounce süresi keyfi bir değer, pre-existing ve şimdilik yeterli.
+
+## Deferred from: code review of 6-1-navigasyon-ve-header-yeniden-duzenleme (2026-04-28)
+- **Grid Hizalama Riski**: `1fr auto 1fr` yapısı dengesiz içerikte merkezin kaymasına neden olabilir. (Reason: Pre-existing tasarım tercihi)
+

@@ -1,5 +1,5 @@
 # generated: 2026-04-24T02:45:05+03:00
-# last_updated: 2026-04-28T16:18:00+03:00
+# last_updated: 2026-04-28T17:28:00+03:00
 # project: akademi_yurt
 # project_key: NOKEY
 # tracking_system: file-system
@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-24T02:45:05+03:00
-last_updated: 2026-04-28T16:32:00+03:00
+last_updated: 2026-04-29T14:57:00+03:00
 project: akademi_yurt
 project_key: NOKEY
 tracking_system: file-system
@@ -67,9 +67,9 @@ development_status:
   5-2-gorsel-optimizasyon-ve-lighthouse-performans-cilalamasi: done
   5-3-erisilebilirlik-a11y-ve-kontrast-denetimi: done
   epic-5-retrospective: optional
-  epic-6: backlog
-  6-1-navigasyon-ve-header-yeniden-duzenleme: backlog
-  6-2-split-hero-animasyon-optimizasyonu: backlog
+  epic-6: in-progress
+  6-1-navigasyon-ve-header-yeniden-duzenleme: done
+  6-2-split-hero-animasyon-optimizasyonu: review
   6-3-varlik-onarimi-ve-hata-giderme: backlog
   6-4-kart-ve-ui-sadelestirme: backlog
   6-5-teknik-borc-temizligi-ve-a11y-final: backlog

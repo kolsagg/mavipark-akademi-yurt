@@ -23,7 +23,6 @@
   justify-content: center;
   overflow: hidden;
   cursor: pointer;
-  transition: flex var(--transition-slow) cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform, flex;
 }
 
@@ -35,7 +34,6 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
@@ -55,7 +53,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(26, 26, 26, 0.5); /* slightly darker for better text contrast */
-  transition: background-color var(--transition-slow) ease;
   z-index: 1;
 }
 
@@ -67,7 +64,6 @@
   padding: var(--space-6);
   transform: translateY(20px);
   opacity: 0; /* Animated by GSAP */
-  transition: transform var(--transition-slow) ease, opacity var(--transition-slow) ease;
 }
 
 .split-hero__title {
@@ -101,32 +97,7 @@
 }
 
 /* Interactive States - Only for devices that support hover */
-@media (hover: hover) {
-  .split-hero:has(.split-hero__panel:hover) .split-hero__panel:not(:hover) {
-    flex: 0.8;
-  }
 
-  .split-hero__panel:hover {
-    flex: 1.2;
-  }
-
-  .split-hero__panel:hover .split-hero__bg {
-    transform: scale(1.05);
-  }
-
-  .split-hero__panel:hover .split-hero__overlay {
-    background-color: rgba(26, 26, 26, 0.2);
-  }
-
-  .split-hero__panel:hover .split-hero__btn {
-    background-color: var(--color-white);
-    color: var(--color-anthracite);
-  }
-
-  .split-hero__panel:hover .split-hero__content {
-    transform: translateY(0);
-  }
-}
 
 /* Mobile active state fallback */
 .split-hero__panel:active .split-hero__overlay {
