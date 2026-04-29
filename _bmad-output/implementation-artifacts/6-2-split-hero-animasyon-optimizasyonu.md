@@ -1,6 +1,6 @@
 # Story 6.2: Split-Hero Animasyon Optimizasyonu
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -53,5 +53,11 @@ GSAP Context ile izole animasyon yönetimi kuruldu ve Cleanup fonksiyonu tanıml
 - Addressed hover performance by moving CSS transitions to GSAP. Added proper reduced motion checks and JS-based cleanup for hover context. Added related test module.
 
 ## Story Completion Status
-- **Status:** review
+- **Status:** done
 - **Completion Note:** Story implementation completed successfully and validated. Ready for code review.
+
+### Review Findings
+
+- [x] [Review][Patch] Memory Leak: Event listeners are not cleaned up in `destroy()` [src/components/SplitHero.js]
+- [x] [Review][Patch] Inconsistent Color Usage in JS: Hardcoded overlay colors [src/components/SplitHero.js:71, 108]
+- [x] [Review][Defer] Static Event Binding: Hover behavior does not update on orientation change or resize [src/components/SplitHero.js:28] — deferred, pre-existing

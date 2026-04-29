@@ -28,3 +28,7 @@
 ## Deferred from: code review of 6-1-navigasyon-ve-header-yeniden-duzenleme (2026-04-28)
 - **Grid Hizalama Riski**: `1fr auto 1fr` yapısı dengesiz içerikte merkezin kaymasına neden olabilir. (Reason: Pre-existing tasarım tercihi)
 
+## Deferred from: code review of 6-2-split-hero-animasyon-optimizasyonu.md (2026-04-29)
+
+- Static Event Binding: Hover behavior (isHoverable and reduced motion check) does not update on orientation change or window resize after initialization.
+

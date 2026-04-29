@@ -27,21 +27,24 @@ export class SplitHero {
     // and it's a hover-capable device (desktop)
     const isHoverable = window.matchMedia('(hover: hover)').matches;
     
+    // Store handlers for cleanup
+    this.handlers = [];
+
     this.panels.forEach((panel) => {
       const bg = panel.querySelector('.split-hero__bg');
       const overlay = panel.querySelector('.split-hero__overlay');
       const content = panel.querySelector('.split-hero__content');
       
-      // Click event for navigation
-      panel.addEventListener('click', (e) => {
+      const clickHandler = () => {
         const theme = panel.dataset.panel;
         this.selectTheme(theme);
-      });
+      };
+
+      panel.addEventListener('click', clickHandler);
+      this.handlers.push({ el: panel, type: 'click', fn: clickHandler });
       
       if (!this.mediaQuery.matches && isHoverable) {
-        // Desktop Hover Events
-        panel.addEventListener('mouseenter', () => {
-          // Shrink all panels slightly first
+        const enterHandler = () => {
           gsap.to(this.panels, {
             flex: 0.8,
             duration: 0.6,
@@ -49,7 +52,6 @@ export class SplitHero {
             overwrite: "auto"
           });
           
-          // Expand hovered panel
           gsap.to(panel, {
             flex: 1.2,
             duration: 0.6,
@@ -68,7 +70,7 @@ export class SplitHero {
           
           if (overlay) {
             gsap.to(overlay, {
-              backgroundColor: "rgba(26, 26, 26, 0.2)",
+              opacity: 0.4, // Reduced from 1 (base in CSS should be 1 with background)
               duration: 0.6,
               ease: "power2.out",
               overwrite: "auto"
@@ -83,10 +85,9 @@ export class SplitHero {
               overwrite: "auto"
             });
           }
-        });
-        
-        panel.addEventListener('mouseleave', () => {
-          // Reset all panels
+        };
+
+        const leaveHandler = () => {
           gsap.to(this.panels, {
             flex: 1,
             duration: 0.6,
@@ -105,7 +106,7 @@ export class SplitHero {
           
           if (overlay) {
             gsap.to(overlay, {
-              backgroundColor: "rgba(26, 26, 26, 0.5)",
+              opacity: 1, // Reset to base CSS opacity
               duration: 0.6,
               ease: "power2.out",
               overwrite: "auto"
@@ -120,7 +121,12 @@ export class SplitHero {
               overwrite: "auto"
             });
           }
-        });
+        };
+
+        panel.addEventListener('mouseenter', enterHandler);
+        panel.addEventListener('mouseleave', leaveHandler);
+        this.handlers.push({ el: panel, type: 'mouseenter', fn: enterHandler });
+        this.handlers.push({ el: panel, type: 'mouseleave', fn: leaveHandler });
       }
     });
   }
@@ -143,6 +149,14 @@ export class SplitHero {
   }
   
   destroy() {
+    // Remove all event listeners
+    if (this.handlers) {
+      this.handlers.forEach(({ el, type, fn }) => {
+        el.removeEventListener(type, fn);
+      });
+      this.handlers = [];
+    }
+
     if (this.ctx) {
       this.ctx.revert();
     }
