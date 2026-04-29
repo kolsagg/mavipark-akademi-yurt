@@ -4,6 +4,10 @@
 
 - **Footer A11y Denetimi**: `_footer.hbs` dosyası henüz oluşturulmadığı için erişilebilirlik denetimi yapılamadı. Story 5.3 tamamlandıktan sonra ele alınacak. (Reason: Bu story bittikten sonra geliştirilecek)
 
+## Deferred from: code review of 6-4-kart-ve-ui-sadelestirme (2026-04-30)
+
+- **justify-content: center kullanımı kaynaklı taşma riski [src/styles/components/_room-panel.css:48]**: Oda kartı footer alanında buton kaldırıldıktan sonra tekil rozet merkeze alındı. Eğer gelecekte buraya daha fazla bilgi eklenirse yerleşim bozulabilir. Şu anki sade tasarım için kabul edilebilir.
+
 ## Deferred from: code review of 3-1-glassmorphism-kart-bileseni-tasarimi (2026-04-25)
 - **Main JS Senkron Import Yükü**: Tüm bileşen modülleri main.js içinde senkron olarak import ediliyor. Proje büyüdükçe dynamic import (lazy loading) stratejisine geçilmesi gerekebilir.
 
@@ -32,3 +36,7 @@
 
 - Static Event Binding: Hover behavior (isHoverable and reduced motion check) does not update on orientation change or window resize after initialization.
 
+## Deferred from: code review of 6-3-varlik-onarimi-ve-hata-giderme (2026-04-30)
+
+- **Nav/İletişim/Özellikler İkon Dönüşümü Eksik:** AC Navigasyon, İletişim ve Özellikler alanlarını kapsıyor ama diff sadece Hero ikonlarını değiştirmiş. Diğer bölümler gelecek story'lerde ele alınmalı.
+- **console.warn Production Gürültüsü:** `src/core/utils.js:31`'de her kırık görsel için console.warn basılıyor. Production build'de gereksiz log çıktısı.

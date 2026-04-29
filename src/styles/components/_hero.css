@@ -43,10 +43,6 @@
   width: fit-content;
 }
 
-.hero__badge .material-symbols-outlined {
-  color: var(--theme-primary);
-  font-size: var(--font-size-sm);
-}
 
 .hero__badge span:last-child {
   font-family: var(--font-body);
@@ -122,10 +118,6 @@
   flex-shrink: 0;
 }
 
-.hero__highlight-icon .material-symbols-outlined {
-  color: var(--theme-primary);
-  font-size: 32px;
-}
 
 .hero__highlight-text h3 {
   font-family: var(--font-heading);

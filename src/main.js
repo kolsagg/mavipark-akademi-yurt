@@ -16,6 +16,7 @@ import Hero from './components/Hero';
 import ContactPanel from './components/ContactPanel';
 import { floatingCTA } from './components/FloatingCTA';
 import { scrollEngine } from './core/ScrollEngine';
+import { setupImageErrorHandling } from './core/utils';
 
 /**
  * Application bootstrap
@@ -34,6 +35,9 @@ function initApp() {
 
   // Initialize URL-First Theme Management
   ThemeManager.init();
+
+  // Initialize Global Image Error Handling
+  setupImageErrorHandling();
 
   // Initialize Navigation Switcher
   Navigation.init();

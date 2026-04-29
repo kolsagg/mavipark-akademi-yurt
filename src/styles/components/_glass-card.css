@@ -20,6 +20,12 @@
   z-index: var(--z-base); /* Ensure correct stacking */
 }
 
+.glass-card[data-clickable],
+.glass-card[onclick],
+.glass-card--clickable {
+  cursor: pointer;
+}
+
 /* Fallback for browsers that don't support backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
   .glass-card {

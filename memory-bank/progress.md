@@ -26,9 +26,9 @@
 - [x] SEO Metadataları ve Semantik HTML Optimizasyonu (Story 5.1)
 - [x] Görsel Optimizasyon ve Lighthouse Performans Cilalaması (Story 5.2)
 - [x] Navigasyon ve Header Yeniden Düzenleme (Story 6.1)
-- [ ] Split-Hero Animasyon Optimizasyonu (Story 6.2)
-- [ ] Varlık Onarımı ve Hata Giderme (Story 6.3)
-- [ ] Kart ve UI Sadeleştirme (Story 6.4)
+- [x] Split-Hero Animasyon Optimizasyonu (Story 6.2)
+- [x] Varlık Onarımı ve Hata Giderme (Story 6.3)
+- [x] Kart ve UI Sadeleştirme (Story 6.4)
 - [ ] Teknik Borç Temizliği ve A11y Final (Story 6.5)
 
 ## Bilinen Sorunlar

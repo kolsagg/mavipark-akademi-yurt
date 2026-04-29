@@ -130,6 +130,12 @@ a:focus:not(:focus-visible) {
   border-width: 0;
 }
 
+.icon--primary {
+  color: var(--theme-primary);
+  stroke: var(--theme-primary);
+  fill: none;
+}
+
 /* ===================================================
    COMMON COMPONENTS
    =================================================== */

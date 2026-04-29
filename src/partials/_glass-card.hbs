@@ -1,7 +1,7 @@
 <div class="glass-card {{class}}" data-glass-card>
   {{#if image}}
   <div class="glass-card__image-wrapper">
-    <img src="{{image}}" alt="{{#if image_alt}}{{image_alt}}{{else}}{{title}}{{/if}}" class="glass-card__image" loading="lazy">
+    <img src="{{image}}" alt="{{#if image_alt}}{{image_alt}}{{else}}{{title}}{{/if}}" class="glass-card__image" loading="lazy" data-fallback="{{#if fallback}}{{fallback}}{{else}}room{{/if}}">
   </div>
   {{/if}}
   

@@ -45,7 +45,7 @@
   margin-top: auto;
   padding: var(--space-4);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background: rgba(var(--color-white-rgb), 0.05);
   border-bottom-left-radius: inherit;
@@ -66,22 +66,6 @@
   background: transparent;
   color: var(--theme-primary);
   border: 1px solid var(--theme-primary);
-}
-
-.room-panel__btn {
-  padding: 8px 16px;
-  font-size: 12px;
-  border-radius: 4px;
-  background: var(--theme-primary);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: var(--font-weight-bold);
-  transition: filter var(--transition-base);
-}
-
-.room-panel__btn:hover {
-  filter: brightness(1.1);
 }
 
 .glass-card__list-icon svg {

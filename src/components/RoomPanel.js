@@ -94,9 +94,9 @@ class RoomPanel {
     `).join('');
 
     return `
-      <div class="glass-card" data-glass-card data-room-index="${index}" data-reveal-batch>
+      <div class="glass-card" data-glass-card data-room-index="${index}" data-reveal-batch data-clickable>
         <div class="glass-card__image-wrapper">
-          <img src="${room.image}" alt="Oda Görseli: ${room.title}" class="glass-card__image" loading="lazy">
+          <img src="${room.image}" alt="Oda Görseli: ${room.title}" class="glass-card__image" loading="lazy" data-fallback="bedroom">
         </div>
         <div class="glass-card__body">
           <span class="room-type-badge">${room.tag}</span>
@@ -108,7 +108,6 @@ class RoomPanel {
         </div>
         <div class="glass-card__footer">
           <span class="room-type-badge room-type-badge--outline">${room.type}</span>
-          <button class="room-panel__btn" aria-label="Keşfet: ${room.title}">KEŞFET</button>
         </div>
       </div>
     `;
@@ -154,6 +153,17 @@ class RoomPanel {
       }
     };
     window.addEventListener('themeChanged', this.themeListener);
+
+    // Card click handler (delegated)
+    this.container.addEventListener('click', (e) => {
+      const card = e.target.closest('[data-clickable]');
+      if (card) {
+        const contactSection = document.querySelector('.contact-panel');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
   }
 
   /**

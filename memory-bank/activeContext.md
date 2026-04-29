@@ -26,7 +26,10 @@
 - [x] Story 5.2: Görsel Optimizasyon ve Lighthouse Performans Cilalaması tamamlandı.
 - [x] Story 5.3: Erişilebilirlik (A11y) ve Kontrast Denetimi tamamlandı ve adversarial review ile optimize edildi.
 - [x] Story 6.1: Navigasyon ve Header Yeniden Düzenleme tamamlandı. 3 sütunlu (Logo/Linkler - Switch - Linkler/CTA) yapıya geçildi, aktif link takibi ve GSAP hover animasyonları eklendi.
-- [ ] Story 6.2: Split-Hero Animasyon Optimizasyonu başladı.
+- [x] Story 6.2: Split-Hero Animasyon Optimizasyonu tamamlandı.
+- [x] Story 6.3: Varlık Onarımı ve Hata Giderme tamamlandı.
+- [x] Story 6.4: Kart ve UI Sadeleştirme tamamlandı.
+- [ ] Story 6.5: Teknik Borç Temizliği ve A11y Final.
 
 ## Aktif Kararlar
 - Proje ismi olarak "Akademi Suit" veya "Akademi Yurt" kullanılacak (genel dosya adı: akademi_yurt).
