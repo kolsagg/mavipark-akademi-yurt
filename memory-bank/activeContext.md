@@ -29,7 +29,8 @@
 - [x] Story 6.2: Split-Hero Animasyon Optimizasyonu tamamlandı.
 - [x] Story 6.3: Varlık Onarımı ve Hata Giderme tamamlandı.
 - [x] Story 6.4: Kart ve UI Sadeleştirme tamamlandı.
-- [ ] Story 6.5: Teknik Borç Temizliği ve A11y Final.
+- [x] Story 6.5: Teknik Borç Temizliği ve A11y Final tamamlandı. Dynamic imports ve layout sistemi iyileştirildi. Footer bileşeni eklendi ancak kullanıcı isteğiyle tamamen kaldırıldı.
+- [x] Proje ana geliştirme aşaması tamamlandı, Lighthouse denetimleri ve son cilalamalar yapıldı.
 
 ## Aktif Kararlar
 - Proje ismi olarak "Akademi Suit" veya "Akademi Yurt" kullanılacak (genel dosya adı: akademi_yurt).

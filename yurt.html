@@ -1,43 +1,9 @@
-<!DOCTYPE html>
-<html lang="tr">
-  <head>
-    {{> _head-meta pageTitle="Yurt Detayları" siteDescription="Akademi Suit - Premium Konaklama Deneyimi" }}
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    
-    <!-- Preload Critical Fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" as="style" />
-
+{{> _layout-header pageTitle="Yurt Detayları" siteDescription="Akademi Suit - Premium Konaklama Deneyimi" }}
     <!-- Preload Hero Image (Default Theme: Girls) -->
     <link rel="preload" href="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=1200&fm=webp" as="image" fetchpriority="high" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-      media="print" 
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    </noscript>
-    
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  </head>
-  <body>
-    {{> _preloader }}
-    {{> _page-bg }}
-    {{> _header }}
-    
-    <main id="app">
+{{> _layout-body showHeader=true }}
       {{> _hero }}
       {{> _room-panel }}
       {{> _amenities-panel }}
       {{> _contact-panel }}
-    </main>
-    {{> _floating-cta }}
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
+{{> _layout-footer }}

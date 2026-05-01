@@ -4,6 +4,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /**
+ * ScrollEngine Configuration Constants
+ */
+const SCROLL_CONFIG = {
+  TRIGGER_START: 'top 85%',
+  REVEAL_DURATION: 1.2,
+  BATCH_DURATION: 1,
+  BATCH_STAGGER: 0.15,
+  REFRESH_DEBOUNCE: 150,
+  INITIAL_OFFSET: 40,
+  BATCH_OFFSET: 30,
+  EASE_MAIN: 'power3.out',
+  EASE_BATCH: 'power2.out'
+};
+
+/**
  * Akademi Suit - Scroll Engine
  * Manages scroll-triggered animations and reveal effects with batching support
  */
@@ -11,6 +26,7 @@ class ScrollEngine {
   constructor() {
     this.ctx = null;
     this.mm = gsap.matchMedia();
+    this.refreshTimeout = null;
   }
 
   /**
@@ -18,9 +34,7 @@ class ScrollEngine {
    */
   init() {
     // If context already exists, revert it first
-    if (this.ctx) {
-      this.ctx.revert();
-    }
+    this.destroy();
 
     this.ctx = gsap.context(() => {
       // Use matchMedia to handle accessibility preferences dynamically
@@ -70,12 +84,12 @@ class ScrollEngine {
       let initialVars = { opacity: 0, visibility: 'visible' };
       let animVars = { 
         opacity: 1, 
-        duration: 1.2, 
-        ease: 'power3.out',
+        duration: SCROLL_CONFIG.REVEAL_DURATION, 
+        ease: SCROLL_CONFIG.EASE_MAIN,
         delay: delay,
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: SCROLL_CONFIG.TRIGGER_START,
           toggleActions: 'play none none none',
           once: true,
           onEnter: () => el.classList.add('is-animating'),
@@ -83,10 +97,10 @@ class ScrollEngine {
         }
       };
 
-      if (type === 'up') initialVars.y = 40;
-      if (type === 'down') initialVars.y = -40;
-      if (type === 'left') initialVars.x = 40;
-      if (type === 'right') initialVars.x = -40;
+      if (type === 'up') initialVars.y = SCROLL_CONFIG.INITIAL_OFFSET;
+      if (type === 'down') initialVars.y = -SCROLL_CONFIG.INITIAL_OFFSET;
+      if (type === 'left') initialVars.x = SCROLL_CONFIG.INITIAL_OFFSET;
+      if (type === 'right') initialVars.x = -SCROLL_CONFIG.INITIAL_OFFSET;
 
       gsap.set(el, initialVars);
       gsap.to(el, animVars);
@@ -107,7 +121,7 @@ class ScrollEngine {
       items.forEach(el => el.setAttribute('data-scroll-init', 'true'));
 
       // Set initial states before creating the batch to avoid race conditions
-      gsap.set(items, { opacity: 0, y: 30 });
+      gsap.set(items, { opacity: 0, y: SCROLL_CONFIG.BATCH_OFFSET, visibility: 'visible' });
 
       ScrollTrigger.batch(items, {
         onEnter: batch => {
@@ -115,15 +129,15 @@ class ScrollEngine {
           gsap.to(batch, {
             opacity: 1,
             y: 0,
-            stagger: { each: 0.15, grid: 'auto' },
+            stagger: { each: SCROLL_CONFIG.BATCH_STAGGER, grid: 'auto' },
             overwrite: true,
-            duration: 1,
-            ease: 'power2.out',
+            duration: SCROLL_CONFIG.BATCH_DURATION,
+            ease: SCROLL_CONFIG.EASE_BATCH,
             onStart: () => gsap.set(batch, { visibility: 'visible' }),
             onComplete: () => batch.forEach(el => el.classList.remove('is-animating'))
           });
         },
-        start: 'top 85%'
+        start: SCROLL_CONFIG.TRIGGER_START
       });
     });
   }
@@ -148,17 +162,24 @@ class ScrollEngine {
         });
       }
       ScrollTrigger.refresh();
-      console.log('ScrollEngine: Refreshed triggers for new content');
-    }, 150); // Slightly increased debounce for safety
+      console.log('ScrollEngine: Refreshed triggers');
+    }, SCROLL_CONFIG.REFRESH_DEBOUNCE);
   }
 
   /**
    * Cleans up GSAP context and matchMedia
    */
   destroy() {
-    if (this.refreshTimeout) clearTimeout(this.refreshTimeout);
-    if (this.mm) this.mm.revert();
-    if (this.ctx) this.ctx.revert();
+    if (this.refreshTimeout) {
+      clearTimeout(this.refreshTimeout);
+      this.refreshTimeout = null;
+    }
+    if (this.ctx) {
+      this.ctx.revert();
+      this.ctx = null;
+    }
+    // Note: this.mm.revert() is handled by this.ctx.revert() if they are linked
+    // but better to be explicit or just ensure ctx is clean.
   }
 }
 

@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-24T02:45:05+03:00
-last_updated: 2026-04-30T00:56:00+03:00
+last_updated: 2026-04-30T01:00:00+03:00
 project: akademi_yurt
 project_key: NOKEY
 tracking_system: file-system
@@ -72,5 +72,5 @@ development_status:
   6-2-split-hero-animasyon-optimizasyonu: done
   6-3-varlik-onarimi-ve-hata-giderme: done
   6-4-kart-ve-ui-sadelestirme: done
-  6-5-teknik-borc-temizligi-ve-a11y-final: backlog
+  6-5-teknik-borc-temizligi-ve-a11y-final: done
   epic-6-retrospective: optional

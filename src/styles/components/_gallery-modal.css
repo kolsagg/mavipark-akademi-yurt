@@ -1,0 +1,223 @@
+/**
+ * Gallery Modal Styles
+ * Lightbox overlay with image/video display
+ */
+
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-modal__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.gallery-modal__container {
+  position: relative;
+  z-index: 1;
+  width: 90vw;
+  max-width: 1100px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Close button */
+.gallery-modal__close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-white);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.gallery-modal__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Main content area */
+.gallery-modal__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.gallery-modal__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  user-select: none;
+}
+
+.gallery-modal__video {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-md);
+  background: #000;
+  outline: none;
+}
+
+/* Navigation arrows */
+.gallery-modal__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-white);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.gallery-modal__nav:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-modal__nav--prev {
+  left: -24px;
+}
+
+.gallery-modal__nav--next {
+  right: -24px;
+}
+
+/* Counter */
+.gallery-modal__counter {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* Thumbnail strip */
+.gallery-modal__thumbnails {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: var(--space-1) 0;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+
+.gallery-modal__thumbnails::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-modal__thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.gallery-modal__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-modal__thumb:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.gallery-modal__thumb.is-active {
+  border-color: var(--theme-primary, #fff);
+  transform: scale(1.08);
+}
+
+.gallery-modal__thumb--video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .gallery-modal__container {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    gap: var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .gallery-modal__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-modal__nav--prev {
+    left: 4px;
+  }
+
+  .gallery-modal__nav--next {
+    right: 4px;
+  }
+
+  .gallery-modal__close {
+    top: 4px;
+    right: 4px;
+  }
+
+  .gallery-modal__thumb {
+    width: 44px;
+    height: 44px;
+  }
+
+  .gallery-modal__content {
+    border-radius: var(--radius-sm);
+  }
+}

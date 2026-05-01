@@ -5,6 +5,13 @@ class ThemeManager {
   static init() {
     // Read theme from URL on load
     const theme = this.getThemeFromURL();
+    
+    // If on yurt.html without a type, redirect to boys (default)
+    if (!theme && window.location.pathname.includes('yurt.html')) {
+      window.location.replace('/yurt.html?type=boys');
+      return;
+    }
+
     this.applyTheme(theme); // Apply even if null to ensure clean state
 
     // Listen for history changes
@@ -72,10 +79,37 @@ class ThemeManager {
   }
 
   /**
-   * Convenience method to set theme externally
+   * Sets theme with a smooth fade transition to prevent color flash.
+   * UI and colors change together during the fade.
    */
   static setTheme(theme) {
-    this.applyTheme(theme, true);
+    const currentTheme = document.body.dataset.theme;
+    if (currentTheme === theme) return;
+
+    const app = document.getElementById('app');
+    if (!app) {
+      this.applyTheme(theme, true);
+      return;
+    }
+
+    // Fade out
+    app.style.transition = 'opacity 0.25s ease';
+    app.style.opacity = '0';
+
+    setTimeout(() => {
+      // Apply theme while hidden
+      this.applyTheme(theme, true);
+
+      // Fade in
+      requestAnimationFrame(() => {
+        app.style.opacity = '1';
+        // Clean up inline styles after transition
+        setTimeout(() => {
+          app.style.removeProperty('transition');
+          app.style.removeProperty('opacity');
+        }, 300);
+      });
+    }, 250);
   }
 }
 

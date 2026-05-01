@@ -1,5 +1,6 @@
 import { roomData } from '../core/data/rooms.js';
 import { scrollEngine } from '../core/ScrollEngine.js';
+import { galleryModal } from './GalleryModal.js';
 import { gsap } from 'gsap';
 
 /**
@@ -93,10 +94,23 @@ class RoomPanel {
       </li>
     `).join('');
 
+    const hasGallery = room.gallery && room.gallery.length > 0;
+    const galleryHint = hasGallery ? `
+      <div class="glass-card__gallery-hint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        <span>${room.gallery.length} Görsel</span>
+      </div>
+    ` : '';
+
     return `
-      <div class="glass-card" data-glass-card data-room-index="${index}" data-reveal-batch data-clickable>
+      <div class="glass-card" data-glass-card data-room-id="${room.id}" data-room-index="${index}" data-reveal-batch data-clickable>
         <div class="glass-card__image-wrapper">
-          <img src="${room.image}" alt="Oda Görseli: ${room.title}" class="glass-card__image" loading="lazy" data-fallback="bedroom">
+          <img src="${room.image}" alt="Oda Görseli: ${room.title}" class="glass-card__image" loading="lazy">
+          ${galleryHint}
         </div>
         <div class="glass-card__body">
           <span class="room-type-badge">${room.tag}</span>
@@ -143,7 +157,7 @@ class RoomPanel {
   }
 
   /**
-   * Listen for theme changes
+   * Listen for theme changes and card clicks
    */
   setupEventListeners() {
     this.themeListener = (e) => {
@@ -154,14 +168,17 @@ class RoomPanel {
     };
     window.addEventListener('themeChanged', this.themeListener);
 
-    // Card click handler (delegated)
+    // Card click handler (delegated) — opens gallery
     this.container.addEventListener('click', (e) => {
-      const card = e.target.closest('[data-clickable]');
-      if (card) {
-        const contactSection = document.querySelector('.contact-panel');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
+      const card = e.target.closest('[data-room-id]');
+      if (!card) return;
+
+      const roomId = card.dataset.roomId;
+      const themeKey = this.currentTheme === 'boys' ? 'erkek' : 'kiz';
+      const room = roomData[themeKey].find(r => r.id === roomId);
+
+      if (room && room.gallery && room.gallery.length > 0) {
+        galleryModal.open(room.gallery, 0);
       }
     });
   }

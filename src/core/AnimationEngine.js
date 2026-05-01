@@ -95,7 +95,8 @@ class AnimationEngine {
    */
   introSplitHero() {
     return new Promise((resolve) => {
-      if (!document.querySelector('.split-hero')) {
+      const splitHero = document.querySelector('.split-hero');
+      if (!splitHero) {
         resolve();
         return;
       }
@@ -118,7 +119,9 @@ class AnimationEngine {
         });
 
         if (isReduced) {
+          gsap.set(['.split-hero__panel--girls', '.split-hero__panel--boys'], { xPercent: 0, yPercent: 0 });
           gsap.set('.split-hero__content', { opacity: 1, y: 0 });
+          gsap.set(splitHero, { visibility: 'visible', opacity: 1 });
           tl.to('.split-hero', { opacity: 1, duration: 0.5 });
           return;
         }
@@ -132,6 +135,9 @@ class AnimationEngine {
           gsap.set('.split-hero__panel--boys', { xPercent: 100 });
         }
         gsap.set('.split-hero__content', { opacity: 0, y: 30 });
+
+        // Make visible AFTER setting initial states (prevents flash)
+        gsap.set(splitHero, { visibility: 'visible' });
 
         // Intro animation
         tl.to(['.split-hero__panel--girls', '.split-hero__panel--boys'], {

@@ -24,6 +24,7 @@ class Navigation {
       this.initScrollObserver();
       this.initResize();
       this.initHovers();
+      this.initSmoothScroll();
       
       // Initial sync
       const currentTheme = document.body.dataset.theme;
@@ -38,6 +39,39 @@ class Navigation {
 
 
     this.isInitialized = true;
+  }
+
+  /**
+   * Initializes smooth scroll for all anchor links (header + hero CTA)
+   */
+  static initSmoothScroll() {
+    // Handle all anchor links on the page
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          
+          // Close mobile menu if open
+          if (this.menu && this.menu.classList.contains('header__menu--visible')) {
+            this.menu.classList.remove('header__menu--visible');
+            if (this.menuToggle) this.menuToggle.setAttribute('aria-expanded', 'false');
+          }
+
+          // Account for fixed header height
+          const headerHeight = this.header ? this.header.offsetHeight : 0;
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
   }
 
   /**
