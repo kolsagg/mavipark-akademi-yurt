@@ -16,7 +16,7 @@ export default defineConfig({
       context: {
         siteName: 'Akademi Suit',
         phoneNumber: '0552 826 48 41',
-        siteDescription: 'Akademi Suit - Premium Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.',
+        siteDescription: 'Akademi Suit - Ayrıcalıklı Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.',
       },
       helpers: {
         or: (a, b) => a || b,
@@ -25,6 +25,7 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist',
+    sourcemap: false,
     emptyOutDir: true,
     cssCodeSplit: true,
     rollupOptions: {

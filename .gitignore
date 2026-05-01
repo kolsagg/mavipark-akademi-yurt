@@ -24,10 +24,10 @@ dist-ssr/
 *.sln
 *.sw?
 
-# BMad specific
-# _bmad-output/
-# .agent/
-# memory-bank/
+BMad specific
+_bmad-output/
+.agent/
+memory-bank/
 
 # Build outputs
 .next/
