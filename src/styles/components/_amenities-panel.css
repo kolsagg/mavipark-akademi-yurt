@@ -10,12 +10,13 @@
 .amenities-panel__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
 @media (min-width: 768px) {
   .amenities-panel__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
   }
 }
 
@@ -50,9 +51,3 @@
   height: 200px;
 }
 
-@media (max-width: 768px) {
-  .amenities-panel__grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-}
