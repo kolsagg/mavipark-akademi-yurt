@@ -10,7 +10,7 @@ export const roomData = {
       id: 'kiz-1-0',
       type: '1+0 Suit',
       title: '1+0 Suit',
-      description: 'Kompakt ve fonksiyonel tasarımıyla tek kişilik konforlu yaşam alanı. Çalışma, dinlenme ve banyo alanları aynı süit içinde.',
+      description: 'Kompakt ve fonksiyonel tasarımıyla tek kişilik konforlu yaşam alanı. Çalışma, dinlenme ve banyo alanları aynı suit içinde.',
       image: '/assets/bir_artı_sıfır/1.webp',
       features: [
         { icon: 'bed', text: 'Tek Kişilik Yatak' },
@@ -32,7 +32,7 @@ export const roomData = {
       id: 'kiz-1-1',
       type: '1+1 Suit',
       title: '1+1 Suit',
-      description: 'Ayrı yaşam ve yatak odası ile premium konfor. Geniş alan, özel banyo ve balkon imkanı.',
+      description: 'Ayrı yaşam ve yatak odası ile ayrıcalıklı konfor. Geniş alan, özel banyo ve balkon imkanı.',
       image: '/assets/bir_artı_bir/1.webp',
       features: [
         { icon: 'bed', text: 'Ayrı Yatak Odası' },
@@ -41,7 +41,7 @@ export const roomData = {
         { icon: 'balcony', text: 'Balkon' },
         { icon: 'fridge', text: 'Mini Buzdolabı' }
       ],
-      tag: 'Premium',
+      tag: 'Ayrıcalıklı',
       gallery: [
         { type: 'image', src: '/assets/bir_artı_bir/1.webp', alt: '1+1 Suit - Genel Görünüm' },
         { type: 'image', src: '/assets/bir_artı_bir/2.webp', alt: '1+1 Suit - Salon' },
@@ -57,7 +57,7 @@ export const roomData = {
       id: 'erkek-1-0',
       type: '1+0 Suit',
       title: '1+0 Suit',
-      description: 'Kompakt ve fonksiyonel tasarımıyla tek kişilik konforlu yaşam alanı. Çalışma, dinlenme ve banyo alanları aynı süit içinde.',
+      description: 'Kompakt ve fonksiyonel tasarımıyla tek kişilik konforlu yaşam alanı. Çalışma, dinlenme ve banyo alanları aynı suit içinde.',
       image: '/assets/bir_artı_sıfır/1.webp',
       features: [
         { icon: 'bed', text: 'Tek Kişilik Yatak' },
@@ -79,7 +79,7 @@ export const roomData = {
       id: 'erkek-1-1',
       type: '1+1 Suit',
       title: '1+1 Suit',
-      description: 'Ayrı yaşam ve yatak odası ile premium konfor. Geniş alan, özel banyo ve balkon imkanı.',
+      description: 'Ayrı yaşam ve yatak odası ile ayrıcalıklı konfor. Geniş alan, özel banyo ve balkon imkanı.',
       image: '/assets/bir_artı_bir/1.webp',
       features: [
         { icon: 'bed', text: 'Ayrı Yatak Odası' },
@@ -88,7 +88,7 @@ export const roomData = {
         { icon: 'balcony', text: 'Balkon' },
         { icon: 'fridge', text: 'Mini Buzdolabı' }
       ],
-      tag: 'Premium',
+      tag: 'Ayrıcalıklı',
       gallery: [
         { type: 'image', src: '/assets/bir_artı_bir/1.webp', alt: '1+1 Suit - Genel Görünüm' },
         { type: 'image', src: '/assets/bir_artı_bir/2.webp', alt: '1+1 Suit - Salon' },
