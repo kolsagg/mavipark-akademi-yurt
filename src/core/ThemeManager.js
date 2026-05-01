@@ -46,7 +46,7 @@ class ThemeManager {
    * @param {string|null} theme - 'girls' or 'boys' or null
    * @param {boolean} [updateHistory=true] - whether to update URL history
    */
-  static applyTheme(theme, updateHistory = true) {
+  static applyTheme(theme, updateHistory = true, dispatchEvent = true) {
     // If theme is null, we can either clear it or keep default. 
     // Requirements say URL-First, so we clear if URL has no preference.
     if (theme && theme !== 'girls' && theme !== 'boys') return;
@@ -58,9 +58,11 @@ class ThemeManager {
       delete document.body.dataset.theme;
     }
 
-    // Dispatch CustomEvent regardless of choice to let subscribers sync
-    const event = new CustomEvent('themeChanged', { detail: { theme } });
-    window.dispatchEvent(event);
+    // Dispatch CustomEvent to let subscribers sync
+    if (dispatchEvent) {
+      const event = new CustomEvent('themeChanged', { detail: { theme } });
+      window.dispatchEvent(event);
+    }
   }
 
   /**
@@ -86,30 +88,16 @@ class ThemeManager {
     const currentTheme = document.body.dataset.theme;
     if (currentTheme === theme) return;
 
-    const app = document.getElementById('app');
-    if (!app) {
+    if (!document.startViewTransition) {
       this.applyTheme(theme, true);
+      window.scrollTo(0, 0);
       return;
     }
 
-    // Fade out
-    app.style.transition = 'opacity 0.25s ease';
-    app.style.opacity = '0';
-
-    setTimeout(() => {
-      // Apply theme while hidden
-      this.applyTheme(theme, true);
-
-      // Fade in
-      requestAnimationFrame(() => {
-        app.style.opacity = '1';
-        // Clean up inline styles after transition
-        setTimeout(() => {
-          app.style.removeProperty('transition');
-          app.style.removeProperty('opacity');
-        }, 300);
-      });
-    }, 250);
+    document.startViewTransition(() => {
+      this.applyTheme(theme, true, true);
+      window.scrollTo(0, 0);
+    });
   }
 }
 

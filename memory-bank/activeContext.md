@@ -31,6 +31,7 @@
 - [x] Story 6.4: Kart ve UI Sadeleştirme tamamlandı.
 - [x] Story 6.5: Teknik Borç Temizliği ve A11y Final tamamlandı. Dynamic imports ve layout sistemi iyileştirildi. Footer bileşeni eklendi ancak kullanıcı isteğiyle tamamen kaldırıldı.
 - [x] Proje ana geliştirme aşaması tamamlandı, Lighthouse denetimleri ve son cilalamalar yapıldı.
+- [x] Kullanıcı geri bildirimlerine dayalı UI iyileştirmeleri (10 maddelik sprint): Tema geçişi sırasında oluşan "flash" (parlama) efekti `document.startViewTransition` API'si ve `GSAP` animasyonlarının senkronizasyonu ile çözüldü. Yurt sayfasına doğrudan girişte erkek sayfasına yönlendirme eklendi. Galeri modülü tamamlandı. CTA butonlar ve bağlantılar optimize edildi.
 
 ## Aktif Kararlar
 - Proje ismi olarak "Akademi Suit" veya "Akademi Yurt" kullanılacak (genel dosya adı: akademi_yurt).

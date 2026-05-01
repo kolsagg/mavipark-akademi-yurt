@@ -30,9 +30,10 @@
 - [x] Varlık Onarımı ve Hata Giderme (Story 6.3)
 - [x] Kart ve UI Sadeleştirme (Story 6.4)
 - [x] Teknik Borç Temizliği ve A11y Final (Story 6.5) - *Not: Footer eklendi ve sonra kullanıcı isteğiyle kaldırıldı.*
+- [x] Kullanıcı Geri Bildirimi UI İyileştirme Sprinti (Tema geçişi, galeri, scroll vb.)
 
 ## Bilinen Sorunlar
-- Herhangi bir kritik hata bulunmuyor. GSAP animasyonları ve responsive yapı optimize edildi.
+- Herhangi bir kritik hata bulunmuyor. Tema geçişlerindeki "flash" sorunu View Transitions API kullanılarak kusursuz hale getirildi.
 
 ## Durum Özeti
-Tüm Epikler (1-6) tamamlandı. Proje, premium bir kullanıcı deneyimi, yüksek performans ve optimize edilmiş bir kod yapısı ile yayına hazır durumdadır. Son olarak footer bileşeni eklenmiş ancak sade bir UI tercihi nedeniyle kaldırılmıştır.
+Tüm Epikler (1-6) ve geri bildirim iyileştirmeleri tamamlandı. Proje, premium bir kullanıcı deneyimi, yüksek performans ve optimize edilmiş bir kod yapısı ile yayına hazır durumdadır. Son geri bildirimlerle UI daha pürüzsüz (özellikle tema geçişleri) ve kullanıcı etkileşimi daha tatmin edici bir seviyeye ulaştı.

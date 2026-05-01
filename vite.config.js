@@ -15,7 +15,7 @@ export default defineConfig({
       partialDirectory: resolve(__dirname, 'src/partials'),
       context: {
         siteName: 'Akademi Suit',
-        phoneNumber: '+90 XXX XXX XX XX',
+        phoneNumber: '0552 826 48 41',
         siteDescription: 'Akademi Suit - Premium Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.',
       },
       helpers: {

@@ -1,0 +1,83 @@
+/**
+ * Theme Transitions (View Transitions API)
+ * Handles smooth sliding and fading of components during theme switch
+ */
+
+/* View Transition Names */
+.hero__content {
+  view-transition-name: hero-content;
+}
+
+.hero__visual {
+  view-transition-name: hero-visual;
+}
+
+[data-room-panel-grid] {
+  view-transition-name: room-cards;
+}
+
+[data-amenities-panel-grid] {
+  view-transition-name: amenities-cards;
+}
+
+/* Base fade for everything else (backgrounds) */
+::view-transition-old(root) {
+  animation: 600ms ease both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 800ms ease both fade-in;
+}
+
+/* Slide animations for components */
+::view-transition-old(hero-content),
+::view-transition-old(hero-visual),
+::view-transition-old(room-cards),
+::view-transition-old(amenities-cards) {
+  animation: 500ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out;
+}
+
+::view-transition-new(hero-content),
+::view-transition-new(hero-visual),
+::view-transition-new(room-cards),
+::view-transition-new(amenities-cards) {
+  animation: 800ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in;
+}
+
+/* Fix overlaps during crossfade by hiding the old early if needed */
+::view-transition-group(hero-content),
+::view-transition-group(hero-visual),
+::view-transition-group(room-cards),
+::view-transition-group(amenities-cards) {
+  animation-duration: 800ms;
+}
+
+/* Keyframes */
+@keyframes slide-out {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes slide-in {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Disable transitions if reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

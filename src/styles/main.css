@@ -20,3 +20,5 @@
 @import './components/_contact-panel.css';
 @import './components/_gallery-modal.css';
 /* ... */
+
+@import './components/_theme-transitions.css';

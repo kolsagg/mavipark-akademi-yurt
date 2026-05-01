@@ -27,7 +27,7 @@ class Hero {
         desc: "Odaklanmanız, rahatınız ve topluluğunuz için tasarlanmış bir sığınak deneyimi yaşayın. Akademik yolculuğunuzu yükselten butik bir yaşam tarzını keşfedin.",
         highlightTitle: "Güvenli & Huzurlu",
         highlightDesc: "7/24 güvenlik ve biyometrik geçiş sistemleri ile içiniz rahat olsun.",
-        image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=1200&fm=webp" // Placeholder
+        image: "/assets/hero.webp"
       },
       boys: {
         badge: "Premium Boys' Residence",
@@ -36,7 +36,7 @@ class Hero {
         desc: "Başarıya giden yolda, konfor ve disiplini birleştiren bir ortam keşfedin. Modern donanımları ve merkezi konumuyla yeni nesil yurt deneyimi.",
         highlightTitle: "Merkezi & Kolay",
         highlightDesc: "Üniversitelere ve sosyal alanlara yürüme mesafesinde stratejik konum.",
-        image: "https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&q=80&w=1200&fm=webp" // Placeholder
+        image: "/assets/hero.webp"
       }
     };
 
@@ -44,7 +44,7 @@ class Hero {
   }
 
   init() {
-    // Listen for theme changes
+    // Listen for theme changes to apply content
     window.addEventListener('themeChanged', (e) => {
       this.updateContent(e.detail.theme);
     });
@@ -52,58 +52,20 @@ class Hero {
     // Initial load
     const currentTheme = document.body.dataset.theme;
     if (currentTheme) {
-      this.updateContent(currentTheme, false);
+      this.updateContent(currentTheme);
     }
   }
 
   /**
-   * Updates hero content with animation
+   * Updates hero content
    * @param {string} theme - 'girls' or 'boys'
-   * @param {boolean} animate - whether to animate the transition
    */
-  updateContent(theme, animate = true) {
+  updateContent(theme) {
     this.currentTheme = theme;
     const content = this.data[theme];
     if (!content) return;
 
-    if (!animate) {
-      this.applyContent(content);
-      return;
-    }
-
-    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (isReducedMotion) {
-      this.applyContent(content);
-      gsap.set(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
-        opacity: 1,
-        y: 0
-      });
-      return;
-    }
-
-    // Out animation
-    gsap.to(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
-      opacity: 0,
-      y: 20,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: 'power2.in',
-      onComplete: () => {
-        // Only apply if this is still the active theme request
-        if (this.currentTheme === theme) {
-          this.applyContent(content);
-          // In animation
-          gsap.to(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power3.out'
-          });
-        }
-      }
-    });
+    this.applyContent(content);
   }
 
   applyContent(content) {

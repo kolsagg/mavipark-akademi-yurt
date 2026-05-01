@@ -123,47 +123,24 @@ class AmenitiesPanel {
         this.handleThemeChange(newTheme);
       }
     };
+    
     window.addEventListener('themeChanged', this.themeListener);
   }
 
   /**
-   * Handles theme change with transition
+   * Handles theme change by re-rendering amenities
    */
   handleThemeChange(newTheme) {
     if (!this.container) return;
 
-    // Kill existing transition to prevent race conditions
-    if (this.currentTransition) {
-      this.currentTransition.kill();
-    }
-
-    if (this.ctx) {
-      this.ctx.revert();
-    }
-
+    if (this.currentTransition) this.currentTransition.kill();
+    if (this.ctx) this.ctx.revert();
+    
+    this.currentTheme = newTheme;
+    
     this.ctx = gsap.context(() => {
-      this.currentTransition = gsap.timeline();
-      
-      this.currentTransition.to(this.container, {
-        opacity: 0,
-        y: 10,
-        duration: 0.3,
-        onComplete: () => {
-          this.currentTheme = newTheme;
-          this.renderAmenities();
-        }
-      });
-
-      this.currentTransition.to(this.container, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.1,
-        onComplete: () => {
-          this.setupAnimations();
-          this.currentTransition = null;
-        }
-      });
+      this.renderAmenities();
+      this.setupAnimations();
     }, this.container);
   }
 }

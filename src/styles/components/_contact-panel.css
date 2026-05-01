@@ -7,15 +7,6 @@
   padding: var(--space-16) 0;
   position: relative;
   z-index: var(--z-base);
-  --accent-color: var(--theme-primary);
-}
-
-[data-theme="girls"] .contact-panel {
-  --accent-color: var(--color-girls-primary);
-}
-
-[data-theme="boys"] .contact-panel {
-  --accent-color: var(--color-boys-primary);
 }
 
 .contact-panel__header {
@@ -68,6 +59,18 @@
 
 .contact-panel__link:hover {
   color: var(--theme-primary);
+}
+
+.contact-panel__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.contact-panel__separator {
+  color: var(--theme-text-light);
+  opacity: 0.5;
 }
 
 .contact-panel__security-cards {
@@ -124,12 +127,11 @@
 }
 
 .contact-panel__map {
-  filter: grayscale(1);
-  transition: filter var(--transition-slow);
+  transition: transform var(--transition-slow);
 }
 
 .contact-panel__map-card:hover .contact-panel__map {
-  filter: grayscale(0);
+  transform: scale(1.02);
 }
 
 .contact-panel__map-overlay {
@@ -152,18 +154,18 @@
   pointer-events: auto;
   display: inline-block;
   padding: var(--space-3) var(--space-6);
-  background: var(--accent-color);
+  background: var(--theme-primary);
   color: var(--color-white);
   border-radius: var(--radius-full);
   font-family: var(--font-body);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   box-shadow: var(--shadow-md);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
 
 .contact-panel__map-btn:focus {
-  outline: 3px solid var(--color-white);
+  outline: 3px solid var(--theme-primary);
   outline-offset: 2px;
 }
 

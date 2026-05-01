@@ -166,6 +166,7 @@ class RoomPanel {
         this.handleThemeChange(newTheme);
       }
     };
+    
     window.addEventListener('themeChanged', this.themeListener);
 
     // Card click handler (delegated) — opens gallery
@@ -184,47 +185,20 @@ class RoomPanel {
   }
 
   /**
-   * Handles theme change with transition animation
+   * Handles theme change by re-rendering rooms
    * @param {string} newTheme 
    */
   handleThemeChange(newTheme) {
     if (!this.container) return;
 
-    // Kill existing context and transition to prevent race conditions
-    if (this.currentTransition) {
-      this.currentTransition.kill();
-    }
-
-    if (this.ctx) {
-      this.ctx.revert();
-    }
-
+    if (this.currentTransition) this.currentTransition.kill();
+    if (this.ctx) this.ctx.revert();
+    
+    this.currentTheme = newTheme;
+    
     this.ctx = gsap.context(() => {
-      this.currentTransition = gsap.timeline();
-      
-      this.currentTransition.to(this.container, {
-        opacity: 0,
-        y: 20,
-        duration: 0.4,
-        ease: 'power2.in',
-        onComplete: () => {
-          this.currentTheme = newTheme;
-          this.renderRooms();
-        }
-      });
-
-      this.currentTransition.to(this.container, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: 0.1,
-        ease: 'power3.out',
-        onComplete: () => {
-          // Re-setup ScrollTrigger for new cards
-          this.setupAnimations();
-          this.currentTransition = null;
-        }
-      });
+      this.renderRooms();
+      this.setupAnimations();
     }, this.container);
   }
 }

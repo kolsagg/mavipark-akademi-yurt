@@ -10,14 +10,14 @@ export const amenitiesData = {
       title: '7/24 Kesintisiz Güvenlik',
       description: 'Profesyonel güvenlik ekibi ve gelişmiş kamera sistemleri ile huzurlu bir yaşam alanı.',
       icon: 'security',
-      image: 'https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&q=80&w=800&fm=webp'
+      image: 'https://images.unsplash.com/photo-1549109926-58f039549485?auto=format&fit=crop&q=80&w=800&fm=webp'
     },
     {
       id: 'amenity-cleaning',
       title: 'Profesyonel Temizlik',
       description: 'Düzenli oda ve ortak alan temizliği ile her zaman hijyenik bir ortam.',
       icon: 'cleaning',
-      image: 'https://images.unsplash.com/photo-1581578731548-c64695ce6958?auto=format&fit=crop&q=80&w=800&fm=webp'
+      image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80&w=800&fm=webp'
     },
     {
       id: 'amenity-internet',
