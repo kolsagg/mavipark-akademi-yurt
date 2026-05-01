@@ -190,14 +190,42 @@ class RoomPanel {
   handleThemeChange(newTheme) {
     if (!this.container) return;
 
-    this.currentTheme = newTheme;
-    this.renderRooms();
-    
-    // Re-setup ScrollTrigger for new cards
-    // Use a small timeout to let the DOM update and ThemeManager to fade back in
-    setTimeout(() => {
-      this.setupAnimations();
-    }, 50);
+    // Kill existing context and transition to prevent race conditions
+    if (this.currentTransition) {
+      this.currentTransition.kill();
+    }
+
+    if (this.ctx) {
+      this.ctx.revert();
+    }
+
+    this.ctx = gsap.context(() => {
+      this.currentTransition = gsap.timeline();
+      
+      this.currentTransition.to(this.container, {
+        opacity: 0,
+        y: 20,
+        duration: 0.4,
+        ease: 'power2.in',
+        onComplete: () => {
+          this.currentTheme = newTheme;
+          this.renderRooms();
+        }
+      });
+
+      this.currentTransition.to(this.container, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.1,
+        ease: 'power3.out',
+        onComplete: () => {
+          // Re-setup ScrollTrigger for new cards
+          this.setupAnimations();
+          this.currentTransition = null;
+        }
+      });
+    }, this.container);
   }
 }
 

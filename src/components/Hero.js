@@ -56,13 +56,54 @@ class Hero {
     }
   }
 
+  /**
+   * Updates hero content with animation
+   * @param {string} theme - 'girls' or 'boys'
+   * @param {boolean} animate - whether to animate the transition
+   */
   updateContent(theme, animate = true) {
     this.currentTheme = theme;
     const content = this.data[theme];
     if (!content) return;
 
-    // ThemeManager handles the global fade out/in, so we just update content immediately
-    this.applyContent(content);
+    if (!animate) {
+      this.applyContent(content);
+      return;
+    }
+
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isReducedMotion) {
+      this.applyContent(content);
+      gsap.set(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
+        opacity: 1,
+        y: 0
+      });
+      return;
+    }
+
+    // Out animation
+    gsap.to(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
+      opacity: 0,
+      y: 20,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: 'power2.in',
+      onComplete: () => {
+        // Only apply if this is still the active theme request
+        if (this.currentTheme === theme) {
+          this.applyContent(content);
+          // In animation
+          gsap.to(this.container.querySelectorAll('.hero__content > *, .hero__visual'), {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out'
+          });
+        }
+      }
+    });
   }
 
   applyContent(content) {
