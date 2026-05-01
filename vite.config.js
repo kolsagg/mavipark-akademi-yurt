@@ -1,22 +1,23 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import handlebars from 'vite-plugin-handlebars';
+import { defineConfig } from "vite";
+import { resolve } from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import handlebars from "vite-plugin-handlebars";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-  root: '.',
-  publicDir: 'public',
+  root: ".",
+  publicDir: "public",
   plugins: [
     handlebars({
-      partialDirectory: resolve(__dirname, 'src/partials'),
+      partialDirectory: resolve(__dirname, "src/partials"),
       context: {
-        siteName: 'Akademi Suit',
-        phoneNumber: '0552 826 48 41',
-        siteDescription: 'Akademi Suit - Ayrıcalıklı Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.',
+        siteName: "Akademi Suit",
+        phoneNumber: "0552 826 48 41",
+        siteDescription:
+          "Akademi Suit - Ayrıcalıklı Öğrenci Yurdu. Kız ve erkek öğrenci yurtları için güvenli, konforlu ve modern yaşam alanları.",
       },
       helpers: {
         or: (a, b) => a || b,
@@ -24,23 +25,23 @@ export default defineConfig({
     }),
   ],
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     sourcemap: false,
     emptyOutDir: true,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        yurt: resolve(__dirname, 'yurt.html'),
+        main: resolve(__dirname, "index.html"),
+        yurt: resolve(__dirname, "yurt.html"),
       },
     },
   },
   esbuild: {
-    pure: ['console.log', 'console.info', 'console.debug', 'console.trace'],
+    pure: ["console.log", "console.info", "console.debug", "console.trace"],
   },
   server: {
     open: true,
     port: 3000,
+    allowedHosts: true,
   },
 });
-
