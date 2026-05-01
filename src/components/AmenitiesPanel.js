@@ -132,39 +132,12 @@ class AmenitiesPanel {
   handleThemeChange(newTheme) {
     if (!this.container) return;
 
-    // Kill existing transition to prevent race conditions
-    if (this.currentTransition) {
-      this.currentTransition.kill();
-    }
-
-    if (this.ctx) {
-      this.ctx.revert();
-    }
-
-    this.ctx = gsap.context(() => {
-      this.currentTransition = gsap.timeline();
-      
-      this.currentTransition.to(this.container, {
-        opacity: 0,
-        y: 10,
-        duration: 0.3,
-        onComplete: () => {
-          this.currentTheme = newTheme;
-          this.renderAmenities();
-        }
-      });
-
-      this.currentTransition.to(this.container, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.1,
-        onComplete: () => {
-          this.setupAnimations();
-          this.currentTransition = null;
-        }
-      });
-    }, this.container);
+    this.currentTheme = newTheme;
+    this.renderAmenities();
+    
+    setTimeout(() => {
+      this.setupAnimations();
+    }, 50);
   }
 }
 

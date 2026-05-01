@@ -86,6 +86,15 @@ class ThemeManager {
     const currentTheme = document.body.dataset.theme;
     if (currentTheme === theme) return;
 
+    // Use modern View Transitions API for perfect full-page cross-fade if supported
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        this.applyTheme(theme, true);
+      });
+      return;
+    }
+
+    // Fallback for browsers without View Transitions support
     const app = document.getElementById('app');
     if (!app) {
       this.applyTheme(theme, true);
