@@ -1,6 +1,6 @@
 /**
  * Genel İmkanlar ve Ortak Alanlar Veri Yapısı
- * Her iki yurt için de ortak olan veya temaya göre değişebilen genel özellikleri içerir.
+ * Her iki suit için de ortak olan veya temaya göre değişebilen genel özellikleri içerir.
  */
 
 export const amenitiesData = {
@@ -50,13 +50,6 @@ export const amenitiesData = {
       description: 'Konsantrasyonu artıran çelik mavisi detaylar ve ergonomik donanımlı etüt odaları.',
       icon: 'desk',
       image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800&fm=webp'
-    },
-    {
-      id: 'amenity-gym-erkek',
-      title: 'Aktif Yaşam Alanı',
-      description: 'Zinde kalmanız için modern ekipmanlarla donatılmış fitness ve hobi alanı.',
-      icon: 'gym',
-      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800&fm=webp'
     }
   ]
 };

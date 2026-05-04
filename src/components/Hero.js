@@ -21,7 +21,7 @@ class Hero {
 
     this.data = {
       girls: {
-        badge: "Ayrıcalıklı Kız Yurdu",
+        badge: "Ayrıcalıklı Kız Suit",
         titleMain: "Zarafet ve Konforun",
         titleAccent: "Modern Hali",
         desc: "Odaklanmanız, rahatınız ve topluluğunuz için tasarlanmış bir sığınak deneyimi yaşayın. Akademik yolculuğunuzu yükselten butik bir yaşam tarzını keşfedin.",
@@ -30,10 +30,10 @@ class Hero {
         image: "/assets/hero.webp"
       },
       boys: {
-        badge: "Ayrıcalıklı Erkek Yurdu",
+        badge: "Ayrıcalıklı Erkek Suit",
         titleMain: "Modern ve Dinamik",
         titleAccent: "Yaşam Alanı",
-        desc: "Başarıya giden yolda, konfor ve disiplini birleştiren bir ortam keşfedin. Modern donanımları ve merkezi konumuyla yeni nesil yurt deneyimi.",
+        desc: "Başarıya giden yolda, konfor ve disiplini birleştiren bir ortam keşfedin. Modern donanımları ve merkezi konumuyla yeni nesil suit deneyimi.",
         highlightTitle: "Merkezi & Kolay",
         highlightDesc: "Üniversitelere ve sosyal alanlara yürüme mesafesinde stratejik konum.",
         image: "/assets/hero.webp"
@@ -78,7 +78,7 @@ class Hero {
     if (this.elements.img) {
       this.elements.img.src = content.image;
       const typeLabel = content.badge.includes('Kız') ? 'Kız' : 'Erkek';
-      this.elements.img.alt = `Akademi Suit - ${typeLabel} Yurdu Konaklama Alanı`;
+      this.elements.img.alt = `Akademi Suit - ${typeLabel} Suit Konaklama Alanı`;
     }
   }
 }
