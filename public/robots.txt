@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akademisuit.com/sitemap.xml
+
+# Disallow sensitive paths
+Disallow: /assets/*.DS_Store

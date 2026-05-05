@@ -3,16 +3,84 @@
 <meta name="description" content="{{siteDescription}}" />
 <meta name="keywords" content="Akademi Suit, öğrenci yurdu, Sivas yurt, Sivas öğrenci suit, kız yurdu Sivas, erkek yurdu Sivas, öğrenci konaklama Sivas, Cumhuriyet Üniversitesi yurt, suit oda, 1+0 suit, 1+1 suit, tek kişilik suit, çift kişilik suit, özel yurt Sivas, lüks öğrenci yurdu" />
 
+<!-- Canonical URL -->
+<link rel="canonical" href="https://akademisuit.com/{{pageSlug}}" />
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="Akademi Suit" />
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:url" content="https://akademisuit.com/{{pageSlug}}" />
 <meta property="og:title" content="{{siteName}} | {{pageTitle}}" />
 <meta property="og:description" content="{{siteDescription}}" />
-<meta property="og:image" content="/assets/og-image.jpg" /> <!-- TODO: Ensure this exists in public/assets/ -->
+<meta property="og:image" content="https://akademisuit.com/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="{{siteName}} | {{pageTitle}}" />
 <meta property="twitter:description" content="{{siteDescription}}" />
-<meta property="twitter:image" content="/assets/og-image.jpg" /> <!-- TODO: Add this file to public/assets/ -->
+<meta property="twitter:image" content="https://akademisuit.com/assets/og-image.jpg" />
+
+<!-- Google Analytics (gtag.js) + Google Ads Conversion Tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DB3BGFJV9L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // GA4 Analytics
+  gtag('config', 'G-DB3BGFJV9L');
+
+  // Google Ads Remarketing + Conversion
+  gtag('config', 'AW-311448137');
+
+  // Dönüşüm takibi — CTA butonlarında çağır
+  // Conversion Label'ı ads.google.com → Dönüşümler'den al, aşağıya yaz
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined' && url != '') {
+        window.open(url, '_blank');
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-311448137/CONVERSION_LABEL',
+        'event_callback': callback
+    });
+    return false;
+  }
+</script>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Akademi Suit",
+  "description": "Sivas'ta öğrenci yurdu ve ayrıcalıklı suit konaklama. Kız ve erkek öğrenciler için güvenli, konforlu ve modern yaşam alanları.",
+  "url": "https://akademisuit.com",
+  "telephone": ["+905528264840", "+905528264841"],
+  "email": "yyurtpak@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sivas",
+    "addressCountry": "TR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.711651490662504,
+    "longitude": 37.03029505460246
+  },
+  "image": "https://akademisuit.com/assets/og-image.jpg",
+  "priceRange": "₺₺",
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Çamaşırhane", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Otopark", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Güvenlik", "value": true}
+  ]
+}
+</script>
 
 <title>{{siteName}} | {{pageTitle}}</title>

@@ -12,6 +12,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # e.g., /kiz, /erkek, /kiz-yurdu, /erkek-yurdu
 RewriteRule ^(kiz|erkek|kiz-yurdu|erkek-yurdu)/?$ /index.html [L,QSA]
 
+# Custom 404 page
+ErrorDocument 404 /404.html
+
 # Fallback: any other non-file request goes to index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

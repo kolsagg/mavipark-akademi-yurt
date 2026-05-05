@@ -33,6 +33,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         yurt: resolve(__dirname, "yurt.html"),
+        notfound: resolve(__dirname, "404.html"),
       },
     },
   },

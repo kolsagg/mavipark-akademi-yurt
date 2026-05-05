@@ -170,7 +170,7 @@ class GalleryModal {
       return `
         <button class="gallery-modal__thumb${i === this.currentIndex ? ' is-active' : ''}" 
                 data-index="${i}" aria-label="Görsel ${i + 1}">
-          <img src="${item.src}" alt="" loading="lazy" draggable="false">
+          <img src="${item.src}" alt="${item.alt || `Görsel ${i + 1}`}" loading="lazy" draggable="false">
         </button>
       `;
     }).join('');
