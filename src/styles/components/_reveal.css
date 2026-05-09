@@ -1,12 +1,37 @@
 /**
  * Akademi Suit - Reveal Animations
  * Initial states for scroll-triggered elements
+ * 
+ * SAFETY: CSS-only fallback ensures content is visible even if JS fails.
+ * The .js-loading class (added by inline script in <head>) keeps elements hidden
+ * until GSAP takes over. If JS never runs, elements are visible by default.
  */
 
+/* DEFAULT: Content is visible (no JS scenario) */
 [data-reveal],
 [data-reveal-batch] {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* When JS is active, hide elements so GSAP can animate them in */
+.js-loading [data-reveal],
+.js-loading [data-reveal-batch] {
   opacity: 0;
-  visibility: hidden; /* Prevent interaction and pop-in */
+  visibility: hidden;
+}
+
+/* CSS-only safety net: if JS takes too long (>4s), force content visible */
+@keyframes reveal-safety-net {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.js-loading [data-reveal],
+.js-loading [data-reveal-batch] {
+  animation: reveal-safety-net 0s 4s forwards;
 }
 
 /* Optimization: will-change only for specific animations */
@@ -15,4 +40,12 @@
   will-change: transform, opacity;
 }
 
-/* Reduced motion fallback handled in ScrollEngine.js */
+/* Reduced motion: skip all animations, show immediately */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal-batch] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+  }
+}

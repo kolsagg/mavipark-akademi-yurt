@@ -34,10 +34,31 @@ RewriteRule . /index.html [L]
 # Performance: Browser caching
 <IfModule mod_expires.c>
     ExpiresActive On
+    ExpiresByType text/html "access plus 10 minutes"
     ExpiresByType text/css "access plus 1 year"
     ExpiresByType application/javascript "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Performance: Cache-Control headers
+<IfModule mod_headers.c>
+    # Vite hashed assets — immutable, cache forever
+    <FilesMatch "\.[a-f0-9]{8}\.(js|css|woff2|webp|avif|svg)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    # HTML — short cache, always revalidate
+    <FilesMatch "\.html$">
+        Header set Cache-Control "public, max-age=600, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# LiteSpeed: Enable server-level caching
+<IfModule LiteSpeed>
+    CacheEnable public /
+    CacheLookup on
 </IfModule>

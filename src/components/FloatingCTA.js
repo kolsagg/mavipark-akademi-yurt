@@ -8,7 +8,7 @@ import gsap from 'gsap';
 
 const CTA_LINKS = {
   girls: 'https://s1.livinsoft.com/student/pre-registration/form/konukevi-b-blok-basvuru/23c5871d-e762-4d0a-a78b-53ed18635a56',
-  boys: 'https://s1.livinsoft.com/student/pre-registration/dorms/yurtpark-yurt/17'
+  boys: 'https://s1.livinsoft.com/student/pre-registration/form/konukevi-a-blok-basvuru/9f4f9731-ec8a-461c-8d89-61a4886aba20'
 };
 
 class FloatingCTA {
@@ -37,6 +37,28 @@ class FloatingCTA {
 
     this.bindEvents();
     this.listenThemeChanges();
+    this.observeSplitHero();
+  }
+
+  /**
+   * Split hero bölümü görünürken floating CTA'yı gizler
+   */
+  observeSplitHero() {
+    const splitHero = document.querySelector('.split-hero');
+    if (!splitHero) return;
+
+    this.splitHeroObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        gsap.killTweensOf(this.ctaContainer);
+        if (entry.isIntersecting) {
+          gsap.set(this.ctaContainer, { opacity: 0, scale: 0.5, visibility: 'hidden', pointerEvents: 'none' });
+        } else {
+          gsap.to(this.ctaContainer, { opacity: 1, scale: 1, visibility: 'visible', duration: 0.4, ease: 'power2.out', pointerEvents: 'auto' });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    this.splitHeroObserver.observe(splitHero);
   }
 
   /**
@@ -109,6 +131,9 @@ class FloatingCTA {
     if (this.ctx) this.ctx.revert();
     if (this.themeListener) {
       window.removeEventListener('themeChanged', this.themeListener);
+    }
+    if (this.splitHeroObserver) {
+      this.splitHeroObserver.disconnect();
     }
   }
 }

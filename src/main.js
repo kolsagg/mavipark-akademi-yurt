@@ -83,6 +83,8 @@ function triggerPreloaderExit() {
   setTimeout(() => {
     document.body.classList.add('app-ready');
     animationEngine.exitPreloader().then(() => {
+      // Remove js-loading class — CSS safety-net is no longer needed
+      document.documentElement.classList.remove('js-loading');
       console.info('[AkademiSuit] Preloader exit complete');
       
       // Attempt to start animations for whatever is on current page
@@ -93,9 +95,30 @@ function triggerPreloaderExit() {
         console.info('[AkademiSuit] Page intros complete');
       }).catch(err => {
         console.warn('[AkademiSuit] Intro animations failed:', err);
+        // Force all content visible on animation failure
+        forceContentVisible();
       });
     });
   }, 500);
+}
+
+/**
+ * Nuclear fallback: force all animated content visible.
+ * Called if animations stall or JS errors occur.
+ */
+function forceContentVisible() {
+  document.documentElement.classList.remove('js-loading');
+  document.body.classList.add('app-ready');
+  const hiddenEls = document.querySelectorAll(
+    '[data-reveal], [data-reveal-batch], .split-hero, .split-hero__content'
+  );
+  hiddenEls.forEach(el => {
+    el.style.opacity = '1';
+    el.style.visibility = 'visible';
+    el.style.transform = 'none';
+  });
+  const preloader = document.getElementById('preloader');
+  if (preloader) preloader.remove();
 }
 
 // Fallback: if load event already fired before listener attached
@@ -104,3 +127,13 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', triggerPreloaderExit);
 }
+
+// GLOBAL SAFETY NET: If nothing happens within 6 seconds, force everything visible
+// This catches edge cases: GSAP CDN failure, parse errors, stalled promises
+setTimeout(() => {
+  if (document.documentElement.classList.contains('js-loading')) {
+    console.warn('[AkademiSuit] Safety timeout triggered — forcing content visible');
+    forceContentVisible();
+  }
+}, 6000);
+

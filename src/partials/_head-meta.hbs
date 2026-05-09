@@ -24,14 +24,14 @@
 <meta property="twitter:image" content="https://akademisuit.com/assets/og-image.jpg" />
 
 <!-- Google Analytics (gtag.js) + Google Ads Conversion Tracking -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DB3BGFJV9L"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5KF5VB8WE"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   // GA4 Analytics
-  gtag('config', 'G-DB3BGFJV9L');
+  gtag('config', 'G-Y5KF5VB8WE');
 
   // Google Ads Remarketing + Conversion
   gtag('config', 'AW-311448137');
@@ -39,13 +39,20 @@
   // Dönüşüm takibi — CTA butonlarında çağır
   // Conversion Label'ı ads.google.com → Dönüşümler'den al, aşağıya yaz
   function gtag_report_conversion(url) {
+    var called = false;
     var callback = function () {
+      if (called) return;
+      called = true;
       if (typeof(url) != 'undefined' && url != '') {
         window.open(url, '_blank');
       }
     };
+    // Failsafe: eğer gtag yanıt vermezse 1sn sonra yine aç
+    setTimeout(callback, 1000);
     gtag('event', 'conversion', {
-        'send_to': 'AW-311448137/CONVERSION_LABEL',
+        'send_to': 'AW-311448137/n1LICKnssKkcEMmkwZQB',
+        'value': 1.0,
+        'currency': 'TRY',
         'event_callback': callback
     });
     return false;

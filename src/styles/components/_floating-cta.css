@@ -4,12 +4,12 @@
   bottom: var(--space-6);
   right: var(--space-6);
   pointer-events: none; /* Container itself shouldn't block clicks */
-  visibility: hidden; /* Will be shown via GSAP */
+  visibility: visible; /* Default: visible for no-JS */
 }
 
-/* Fallback for no-JS or if GSAP fails to trigger */
-.no-js .floating-cta {
-  visibility: visible;
+/* When JS is active, GSAP controls visibility */
+.js-loading .floating-cta {
+  visibility: hidden;
 }
 
 .floating-cta__button {

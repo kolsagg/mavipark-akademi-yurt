@@ -7,7 +7,13 @@
   flex-direction: column; /* Mobile first */
   overflow: hidden;
   background-color: var(--theme-bg);
-  visibility: hidden; /* Prevent flash — GSAP will reveal */
+  visibility: visible; /* Default: visible for no-JS */
+}
+
+/* When JS is active, hide until GSAP reveals */
+.js-loading .split-hero {
+  visibility: hidden;
+  animation: reveal-safety-net 0s 4s forwards;
 }
 
 @media (min-width: 768px) {
@@ -63,8 +69,13 @@
   text-align: center;
   color: var(--color-white);
   padding: var(--space-6);
+  opacity: 1; /* Default: visible for no-JS */
+}
+
+/* When JS is active, GSAP handles the animation */
+.js-loading .split-hero__content {
+  opacity: 0;
   transform: translateY(20px);
-  opacity: 0; /* Animated by GSAP */
 }
 
 .split-hero__title {
