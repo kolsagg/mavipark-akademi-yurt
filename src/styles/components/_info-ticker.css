@@ -1,0 +1,64 @@
+/* Info Ticker — Marquee bilgilendirme bandı */
+.info-ticker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-anthracite) 0%, var(--color-gray-dark) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: var(--z-overlay);
+}
+
+.info-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.info-ticker__text {
+  display: inline-block;
+  white-space: nowrap;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hover'da duraklatma */
+.info-ticker:hover .info-ticker__track {
+  animation-play-state: paused;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .info-ticker__track {
+    animation: none;
+  }
+  .info-ticker__text:last-child {
+    display: none;
+  }
+}
+
+/* Mobile: biraz daha küçük */
+@media (max-width: 767px) {
+  .info-ticker__text {
+    font-size: var(--font-size-xs);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .info-ticker__track {
+    animation-duration: 20s;
+  }
+}
