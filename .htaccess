@@ -45,7 +45,7 @@ RewriteRule . /index.html [L]
     ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
-# Performance: Cache-Control headers
+# Performance + Security: Headers
 <IfModule mod_headers.c>
     # Vite hashed assets — immutable, cache forever
     <FilesMatch "\.[a-f0-9]{8}\.(js|css|woff2|webp|avif|svg)$">
@@ -55,6 +55,15 @@ RewriteRule . /index.html [L]
     <FilesMatch "\.html$">
         Header set Cache-Control "public, max-age=600, must-revalidate"
     </FilesMatch>
+
+    # Content Security Policy
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://source.unsplash.com https://picsum.photos; connect-src 'self' https://www.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; frame-src https://maps.google.com https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+
+    # Hardening
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+    Header set X-Frame-Options "DENY"
 </IfModule>
 
 # LiteSpeed: Enable server-level caching
