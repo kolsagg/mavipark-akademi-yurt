@@ -14,10 +14,30 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-glass);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  transition: transform 0.4s var(--ease-out-expo),
+              box-shadow 0.4s ease,
+              border-color 0.3s ease;
   height: 100%;
   will-change: transform, box-shadow;
-  z-index: var(--z-base); /* Ensure correct stacking */
+  z-index: var(--z-base);
+}
+
+.glass-card[data-clickable]:hover,
+.glass-card[onclick]:hover,
+.glass-card--clickable:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 20px 40px -12px var(--theme-primary-alpha-20);
+  border-color: var(--theme-primary-alpha-40);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-card,
+  .glass-card:hover,
+  .glass-card .glass-card__image,
+  .glass-card:hover .glass-card__image {
+    transform: none;
+    transition: none;
+  }
 }
 
 .glass-card[data-clickable],
@@ -33,13 +53,11 @@
   }
 }
 
-/* Theme adaptation for border */
-body[data-theme="girls"] .glass-card {
-  border-color: rgba(var(--color-lilac-200), 0.3);
-}
-
+/* Theme adaptation for border (semantic token via color-mix) */
+.glass-card[data-theme-border],
+body[data-theme="girls"] .glass-card,
 body[data-theme="boys"] .glass-card {
-  border-color: rgba(var(--color-steel-200), 0.3);
+  border-color: color-mix(in srgb, var(--theme-primary) 30%, transparent);
 }
 
 .glass-card__image-wrapper {

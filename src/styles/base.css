@@ -76,7 +76,10 @@ a {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
+  font-style: italic;
+  background-color: var(--color-glass-white-light);
 }
 
 ul, ol {
@@ -87,9 +90,16 @@ ul, ol {
    FOCUS STATES
    =================================================== */
 :focus-visible {
-  outline: 3px solid var(--theme-primary);
+  outline: 2px solid var(--theme-primary);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
+  transition: outline-offset 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :focus-visible {
+    transition: none;
+  }
 }
 
 button:focus:not(:focus-visible),
