@@ -78,7 +78,7 @@ class AmenitiesPanel {
     return `
       <div class="glass-card" data-glass-card data-amenity-index="${index}" data-reveal-batch>
         <div class="glass-card__image-wrapper">
-          <img src="${amenity.image}" alt="İmkan Görseli: ${amenity.title}" class="glass-card__image" loading="lazy" data-fallback="amenity">
+          <img src="${amenity.image}" alt="İmkan Görseli: ${amenity.title}" class="glass-card__image" loading="lazy" decoding="async" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" data-fallback="amenity">
         </div>
         <div class="glass-card__body">
           <h3 class="glass-card__title" style="display: flex; align-items: center; gap: 12px;">

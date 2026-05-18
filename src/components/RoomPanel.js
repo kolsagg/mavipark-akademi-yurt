@@ -109,7 +109,7 @@ class RoomPanel {
     return `
       <div class="glass-card" data-glass-card data-room-id="${room.id}" data-room-index="${index}" data-reveal-batch data-clickable>
         <div class="glass-card__image-wrapper">
-          <img src="${room.image}" alt="Oda Görseli: ${room.title}" class="glass-card__image" loading="lazy">
+          <img src="${room.image}" alt="Oda Görseli: ${room.title}" class="glass-card__image" loading="lazy" decoding="async" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw">
           ${galleryHint}
         </div>
         <div class="glass-card__body">

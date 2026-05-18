@@ -80,7 +80,7 @@
 
 .split-hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: var(--font-size-hero);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.05em;
   margin-bottom: var(--space-2);
@@ -89,7 +89,7 @@
 
 .split-hero__subtitle {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-normal);
   margin-bottom: var(--space-5);
   opacity: 0.9;
@@ -114,4 +114,18 @@
 /* Mobile active state fallback */
 .split-hero__panel:active .split-hero__overlay {
   background-color: rgba(26, 26, 26, 0.2);
+}
+
+/* Landscape mobile (kısa ekran) */
+@media (max-height: 480px) and (orientation: landscape) {
+  .split-hero {
+    height: 100svh;
+    min-height: 360px;
+  }
+  .split-hero__content {
+    padding: var(--space-3);
+  }
+  .split-hero__subtitle {
+    margin-bottom: var(--space-3);
+  }
 }

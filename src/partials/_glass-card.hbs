@@ -1,7 +1,7 @@
 <div class="glass-card {{class}}" data-glass-card>
   {{#if image}}
   <div class="glass-card__image-wrapper">
-    <img src="{{image}}" alt="{{#if image_alt}}{{image_alt}}{{else}}{{title}}{{/if}}" class="glass-card__image" loading="lazy" data-fallback="{{#if fallback}}{{fallback}}{{else}}room{{/if}}">
+    <img src="{{image}}" alt="{{#if image_alt}}{{image_alt}}{{else}}{{title}}{{/if}}" class="glass-card__image" loading="lazy" decoding="async" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" data-fallback="{{#if fallback}}{{fallback}}{{else}}room{{/if}}">
   </div>
   {{/if}}
   

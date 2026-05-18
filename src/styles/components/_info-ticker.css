@@ -51,6 +51,13 @@
   }
 }
 
+/* Landscape mobile: gizle (kısa ekranda yer tüketmesin) */
+@media (max-height: 480px) and (orientation: landscape) {
+  .info-ticker {
+    display: none;
+  }
+}
+
 /* Mobile: biraz daha küçük */
 @media (max-width: 767px) {
   .info-ticker__text {

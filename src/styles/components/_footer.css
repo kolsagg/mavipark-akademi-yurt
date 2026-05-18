@@ -159,6 +159,7 @@
   font-size: 15px;
   transition: all var(--transition-base);
   display: inline-block;
+  padding-block: var(--space-1);
 }
 
 .footer__links a:hover {

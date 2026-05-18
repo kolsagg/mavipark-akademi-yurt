@@ -94,17 +94,17 @@ body[data-theme="boys"] {
   --font-heading: 'Epilogue', 'Montserrat', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  /* Font Boyutları */
-  --font-size-xs: 0.75rem;    /* 12px */
-  --font-size-sm: 0.875rem;   /* 14px */
-  --font-size-base: 1rem;     /* 16px */
-  --font-size-lg: 1.125rem;   /* 18px */
-  --font-size-xl: 1.25rem;    /* 20px */
-  --font-size-2xl: 1.5rem;    /* 24px */
-  --font-size-3xl: 1.875rem;  /* 30px */
-  --font-size-4xl: 2.25rem;   /* 36px */
-  --font-size-5xl: 3rem;      /* 48px */
-  --font-size-hero: 4rem;     /* 64px - Hero başlıklar */
+  /* Font Boyutları - Fluid Typography (clamp ile responsive) */
+  --font-size-xs: 0.75rem;                                      /* 12px */
+  --font-size-sm: 0.875rem;                                     /* 14px */
+  --font-size-base: clamp(0.9375rem, 0.5vw + 0.75rem, 1rem);    /* 15-16px */
+  --font-size-lg: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);      /* 16-18px */
+  --font-size-xl: clamp(1.125rem, 0.5vw + 1rem, 1.25rem);       /* 18-20px */
+  --font-size-2xl: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);      /* 20-24px */
+  --font-size-3xl: clamp(1.5rem, 2vw + 0.75rem, 1.875rem);      /* 24-30px */
+  --font-size-4xl: clamp(1.75rem, 3vw + 0.75rem, 2.25rem);      /* 28-36px */
+  --font-size-5xl: clamp(1.875rem, 3vw + 1rem, 3rem);           /* 30-48px */
+  --font-size-hero: clamp(2.25rem, 5vw + 1rem, 4rem);           /* 36-64px - Hero başlıklar */
 
   /* Satır Aralıkları */
   --line-height-tight: 1.2;
@@ -173,6 +173,23 @@ body[data-theme="boys"] {
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-slow: 0.5s ease;
+
+  /* Easing Curves */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Touch Target (WCAG / iOS HIG min 44px) */
+  --touch-target-min: 44px;
+
+  /* Breakpoint Referansları (custom-media yok, dokümantasyon amaçlı) */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1440px;
+
+  /* Alpha helpers (theme-aware glow için) */
+  --theme-primary-alpha-20: color-mix(in srgb, var(--theme-primary) 20%, transparent);
+  --theme-primary-alpha-40: color-mix(in srgb, var(--theme-primary) 40%, transparent);
 }
 
 /*
